@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context="com.benson.face.ShowClothActivity">
+
+    <ImageView
+        android:id="@+id/cloth"
+        android:layout_width="900dp"
+        android:layout_height="1350dp"
+        android:layout_marginStart="53dp"
+        android:layout_marginTop="400dp"
+        android:layout_marginEnd="53dp"
+        android:scaleType="fitStart"
+        android:src="@drawable/cloth1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

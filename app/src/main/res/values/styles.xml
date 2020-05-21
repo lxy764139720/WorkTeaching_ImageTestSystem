@@ -1,0 +1,22 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    <style name="ActivityChangeAnimTheme" parent="AppTheme">
+        <item name="android:windowAnimationStyle">@style/OutInAnimTheme</item>
+    </style>
+    <style name="OutInAnimTheme" parent="@android:style/Animation.Activity">
+        <item name="android:activityCloseEnterAnimation">@anim/in_from_left</item>
+        <item name="android:activityCloseExitAnimation">@anim/out_from_right</item>
+    </style>
+    <style name="sexSpinner">
+        <item name="android:textColor">#fff</item>
+        <item name="android:color">#fff</item>
+        <item name="android:textSize">40sp</item>
+    </style>
+</resources>
