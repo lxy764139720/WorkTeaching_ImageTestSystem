@@ -94,11 +94,9 @@ public class CameraActivity extends AppCompatActivity implements Camera.PreviewC
         }
 
         // 动态申请权限
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, CAMERA_REQUEST_CODE);
-                return;
-            }
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, CAMERA_REQUEST_CODE);
+            return;
         }
 
         int cameraId = MyApplication.getCameraId();
@@ -348,10 +346,6 @@ public class CameraActivity extends AppCompatActivity implements Camera.PreviewC
         super.onDestroy();
         if (mCamera != null) {
             mCamera.release();
-        }
-
-        if (cameraTool != null) {
-//            cameraTool.stop();
         }
     }
 }

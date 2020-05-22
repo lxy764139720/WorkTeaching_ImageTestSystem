@@ -33,7 +33,7 @@ public class CameraTool implements Camera.PreviewCallback {
      * @return
      */
     public boolean hasCameraDevice() {
-        return context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA);
+        return context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY);
     }
 
     public void openCamera(final int cameraId) {

@@ -95,8 +95,7 @@ public class CameraSurfaceView extends SurfaceView implements SurfaceHolder.Call
         Camera.Size bestSize = null;
         double showRate = width * 1.0 / height;
         double rate, bestRate = 0;
-        for (Camera.Size size :
-                sizeList) {
+        for (Camera.Size size : sizeList) {
             if (bestSize == null) {
                 bestSize = size;
                 bestRate = size.width * 1.0 / size.height;
