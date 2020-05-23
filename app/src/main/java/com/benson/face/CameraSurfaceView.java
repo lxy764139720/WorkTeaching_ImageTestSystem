@@ -58,7 +58,7 @@ public class CameraSurfaceView extends SurfaceView implements SurfaceHolder.Call
     }
 
     public void setCamera(Camera camera) {
-        //camera.setDisplayOrientation(90);
+        camera.setDisplayOrientation(90);
         this.camera = camera;
         if (state == SurfaceState.CHANGED) {
             setPreviewSize(width, height);

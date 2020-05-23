@@ -102,16 +102,13 @@ public class CameraTool implements Camera.PreviewCallback {
         }
     }
 
-
     public void setCallback(Callback callback) {
         this.callback = callback;
     }
 
-
     public interface Callback {
         void onCapturedFace(byte[] bitmap);
     }
-
 
     public interface CameraToolCallback {
         void onOpenCamera(Camera camera);

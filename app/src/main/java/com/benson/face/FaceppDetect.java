@@ -7,7 +7,6 @@ import java.io.EOFException;
  */
 
 public class FaceppDetect {
-    ;
 
     public interface CallBack {
         void success(String result);
@@ -33,13 +32,12 @@ public class FaceppDetect {
                     str = face.main(arrays);
                     // Log.e("TAG",str);
                 } catch (Exception e) {
-
+                    e.printStackTrace();
                 }
 
 
                 if (callBack != null) {
                     callBack.success(str);
-
                 }
 
             }

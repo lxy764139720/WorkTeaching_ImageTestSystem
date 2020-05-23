@@ -21,7 +21,8 @@ public class MyApplication extends Application {
     }
 
     public static int getPhotoRotationAngle() {
-        SharedPreferences preference = PreferenceManager.getDefaultSharedPreferences(context); //SharedPreferences的本质是基于XML文件存储key-value键值对数据
+        //SharedPreferences的本质是基于XML文件存储key-value键值对数据
+        SharedPreferences preference = PreferenceManager.getDefaultSharedPreferences(context);
         String angle = preference.getString("photo_rotation_angle", "0");
         assert angle != null;
         return Integer.parseInt(angle);

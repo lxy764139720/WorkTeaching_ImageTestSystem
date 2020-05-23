@@ -10,7 +10,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="90dp">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -25,12 +25,12 @@
         android:layout_gravity="center"
         android:orientation="vertical">
 
-        <com.benson.face.CameraSurfaceView
+        <SurfaceView
             android:id="@+id/photo"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_gravity="center"
-            android:layout_weight="6" />
+            android:layout_weight="8" />
 
         <LinearLayout
             android:layout_width="match_parent"
