@@ -16,7 +16,6 @@ import static android.hardware.Camera.getNumberOfCameras;
 
 public class CameraPresenter {
     private AppCompatActivity mAppCompatActivity;
-    private SurfaceView mSurfaceView;
     private SurfaceHolder mSurfaceHolder;
     private Camera mCamera;
     private int mCameraId;
@@ -27,7 +26,6 @@ public class CameraPresenter {
 
     public CameraPresenter(AppCompatActivity mAppCompatActivity, SurfaceView mSurfaceView) {
         this.mAppCompatActivity = mAppCompatActivity;
-        this.mSurfaceView = mSurfaceView;
         this.mSurfaceHolder = mSurfaceView.getHolder();
         DisplayMetrics dm = new DisplayMetrics();
         mAppCompatActivity.getWindowManager().getDefaultDisplay().getMetrics(dm);
@@ -36,6 +34,10 @@ public class CameraPresenter {
         screenHeight = dm.heightPixels;
         Log.d("sssd-手机宽高尺寸:", screenWidth + "*" + screenHeight);
         init();
+    }
+
+    public Camera getmCamera() {
+        return mCamera;
     }
 
     /**

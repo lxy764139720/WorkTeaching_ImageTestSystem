@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#1B5398"
     android:orientation="vertical"
-    tools:context="com.benson.face.CameraActivity">
+    tools:context="com.benson.face.FaceCameraActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

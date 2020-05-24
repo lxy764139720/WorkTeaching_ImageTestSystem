@@ -31,7 +31,7 @@
         <activity android:name=".SelectUserTypeActivity" />
         <activity android:name=".StudentLoginActivity" />
         <activity android:name=".SelectModelActivity" />
-        <activity android:name=".CameraActivity" />
+        <activity android:name=".FaceCameraActivity" />
         <activity android:name=".FaceResultActivity" />
         <activity android:name=".ComplexionStartActivity" />
         <activity android:name=".ComplexionActivity" />

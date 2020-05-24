@@ -32,7 +32,7 @@ public class ClothEndActivity extends AppCompatActivity {
     }
 
     public void faceTest(View view) {
-        startActivity(new Intent(this, CameraActivity.class));
+        startActivity(new Intent(this, FaceCameraActivity.class));
         overridePendingTransition(R.anim.in_from_left, R.anim.out_from_right);
         finish();
     }
