@@ -8,6 +8,17 @@
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="90dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/title" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="vertical">
@@ -18,32 +29,32 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="发型推荐"
+            android:layout_margin="10dp"
             android:textColor="#fff"
-            android:textSize="70sp" />
+            android:textSize="30sp" />
 
         <ImageView
             android:id="@+id/hair"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_weight="7"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="80dp"
+            android:layout_marginRight="80dp"
+            android:layout_weight="3"
             android:scaleType="fitCenter" />
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginLeft="150dp"
-            android:layout_marginRight="150dp"
+            android:layout_margin="10dp"
             android:layout_weight="3">
 
             <TextView
                 android:id="@+id/hairDes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:lineSpacingExtra="8dp"
-                android:textColor="#000"
-                android:textSize="30sp"
+                android:lineSpacingExtra="5dp"
+                android:textColor="#fff"
+                android:textSize="15sp"
                 tools:text="@string/des_hair_man_ling" />
         </ScrollView>
 
@@ -60,33 +71,33 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
             android:text="眼镜推荐"
             android:textColor="#fff"
-            android:textSize="70sp" />
+            android:textSize="30sp" />
 
         <ImageView
             android:id="@+id/glasses"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_weight="7"
+            android:layout_marginLeft="80dp"
+            android:layout_marginRight="80dp"
+            android:layout_weight="3"
             android:scaleType="fitCenter" />
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginLeft="150dp"
-            android:layout_marginRight="150dp"
+            android:layout_margin="10dp"
             android:layout_weight="3">
 
             <TextView
                 android:id="@+id/glassesDes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:lineSpacingExtra="8dp"
-                android:textColor="#000"
-                android:textSize="30sp"
+                android:lineSpacingExtra="5dp"
+                android:textColor="#fff"
+                android:textSize="15sp"
                 tools:text="@string/des_glasses_ling" />
         </ScrollView>
 

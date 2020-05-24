@@ -9,12 +9,16 @@
     android:orientation="vertical"
     tools:context="com.benson.face.ComplexionStartActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="IMAGE TEST SYSTEM"
-        android:textColor="@android:color/white" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="90dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/title" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="400dp"

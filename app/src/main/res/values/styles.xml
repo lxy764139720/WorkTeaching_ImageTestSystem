@@ -7,13 +7,16 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+
     <style name="ActivityChangeAnimTheme" parent="AppTheme">
         <item name="android:windowAnimationStyle">@style/OutInAnimTheme</item>
     </style>
+
     <style name="OutInAnimTheme" parent="@android:style/Animation.Activity">
         <item name="android:activityCloseEnterAnimation">@anim/in_from_left</item>
         <item name="android:activityCloseExitAnimation">@anim/out_from_right</item>
     </style>
+
     <style name="sexSpinner">
         <item name="android:textColor">#fff</item>
         <item name="android:color">#fff</item>

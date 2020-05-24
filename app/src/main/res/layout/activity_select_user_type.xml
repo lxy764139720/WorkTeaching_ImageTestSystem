@@ -4,18 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#2B5393"
+    android:background="#1A5398"
     android:gravity="center_horizontal"
     android:orientation="vertical"
     tools:context="com.benson.face.SelectUserTypeActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:gravity="center"
-        android:text="IMAGE TEST SYSTEM"
-        android:textColor="@android:color/white" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/title" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -40,8 +42,4 @@
             android:onClick="selectNormal" />
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"></LinearLayout>
 </LinearLayout>

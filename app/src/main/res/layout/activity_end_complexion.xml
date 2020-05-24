@@ -3,21 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#2B5493"
+    android:background="#1A5398"
     android:orientation="vertical"
     tools:context="com.benson.face.HairTypeEndActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_height="wrap_content">
 
-        <TextView
+        <ImageView
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:gravity="center"
-            android:text="IMAGE TEST SYSTEM"
-            android:textColor="@android:color/white" />
+            android:layout_height="wrap_content"
+            android:src="@drawable/title" />
     </LinearLayout>
 
     <LinearLayout
@@ -26,7 +23,7 @@
         android:layout_weight="3"
         android:background="@drawable/in_body_bg"
         android:gravity="center_vertical"
-        android:onClick="bodyTest"></LinearLayout>
+        android:onClick="bodyTest" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -38,9 +35,4 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:gravity="center"></LinearLayout>
 </LinearLayout>

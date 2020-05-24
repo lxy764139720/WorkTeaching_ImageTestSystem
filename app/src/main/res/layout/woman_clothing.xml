@@ -3,35 +3,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#1a5398"
+    android:background="#1A5398"
     android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="90dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/title" />
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/cloths"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginLeft="100dp"
-        android:layout_marginRight="100dp"
-        android:layout_weight="7" />
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="80dp"
+        android:layout_weight="4" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:text="推荐描述"
+        android:layout_margin="20dp"
         android:textColor="#fff"
-        android:textSize="70sp" />
+        android:textSize="30sp" />
 
     <TextView
         android:id="@+id/description"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginLeft="100dp"
-        android:layout_marginRight="100dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:layout_weight="3"
-        android:lineSpacingExtra="8dp"
-        android:textColor="#000"
-        android:textSize="30sp"
+        android:lineSpacingExtra="5dp"
+        android:textColor="#fff"
+        android:textSize="15sp"
         tools:text="@string/des_woman_black_and_white" />
 
     <TextView
@@ -39,13 +52,16 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:text="配件推荐"
+        android:layout_margin="20dp"
         android:textColor="#fff"
-        android:textSize="70sp" />
+        android:textSize="30sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="50dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
         android:layout_weight="2"
         android:orientation="horizontal">
 
@@ -54,26 +70,29 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:layout_margin="5dp"
             android:scaleType="fitCenter"
             android:src="@drawable/briefcase"
-            android:textSize="25dp" />
+            android:textSize="25sp" />
 
         <ImageView
             android:id="@+id/wristwatch"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:layout_margin="5dp"
             android:scaleType="fitCenter"
             android:src="@drawable/wristwatch"
-            android:textSize="25dp" />
+            android:textSize="25sp" />
 
         <ImageView
             android:id="@+id/shoes"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:layout_margin="5dp"
             android:scaleType="fitCenter"
             android:src="@drawable/shoes"
-            android:textSize="25dp" />
+            android:textSize="25sp" />
     </LinearLayout>
 </LinearLayout>

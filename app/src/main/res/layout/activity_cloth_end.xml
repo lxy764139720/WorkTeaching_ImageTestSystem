@@ -4,21 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#2B5493"
+    android:background="#1A5398"
     android:orientation="vertical"
     tools:context="com.benson.face.ClothEndActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_height="wrap_content">
 
-        <TextView
+        <ImageView
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:gravity="center"
-            android:text="IMAGE TEST SYSTEM"
-            android:textColor="@android:color/white" />
+            android:layout_height="wrap_content"
+            android:src="@drawable/title" />
     </LinearLayout>
 
     <LinearLayout
@@ -27,7 +24,7 @@
         android:layout_weight="3"
         android:background="@drawable/in_face_bg"
         android:gravity="center_vertical"
-        android:onClick="faceTest"></LinearLayout>
+        android:onClick="faceTest" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -36,12 +33,6 @@
         android:background="@drawable/exit_test_bg"
         android:gravity="center"
         android:onClick="exitTest">
-
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:gravity="center"></LinearLayout>
 </LinearLayout>
