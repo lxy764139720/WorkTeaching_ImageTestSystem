@@ -51,10 +51,15 @@ public class BodyCameraActivity extends AppCompatActivity implements View.OnClic
                 mDialog = mDialogBuilder.show();
                 final Bitmap bp = BitmapFactory.decodeByteArray(data, 0, data.length);
                 Matrix matrix = new Matrix();
+                // 和顺序有关，必须先缩放再旋转
+                matrix.setScale(0.25f, 0.25f);  //图片压缩不超过2M，大小不超过1080*1080
                 matrix.postRotate(90);  //前置270 后置90
                 final Bitmap newBp = Bitmap.createBitmap(bp, 0, 0, bp.getWidth(), bp.getHeight(), matrix, true);
                 ByteArrayOutputStream bos = new ByteArrayOutputStream();
                 newBp.compress(Bitmap.CompressFormat.JPEG, 100, bos);
+                System.out.println(newBp.getByteCount());
+                System.out.println(newBp.getWidth());
+                System.out.println(newBp.getHeight());
                 if (!isTake) {
                     isTake = true;
                     System.out.println(isTake);
@@ -94,10 +99,11 @@ public class BodyCameraActivity extends AppCompatActivity implements View.OnClic
                                     finish();
                                 }
                             } catch (JSONException e) {
+                                e.printStackTrace();
                                 runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
-                                        new AlertDialog.Builder(BodyCameraActivity.this).setMessage("未检测到，请重新拍摄").setCancelable(true).show();
+                                        new AlertDialog.Builder(BodyCameraActivity.this).setMessage("请重新拍摄").setCancelable(true).show();
                                     }
                                 });
                             }

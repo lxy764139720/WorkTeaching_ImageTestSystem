@@ -54,6 +54,8 @@ public class FaceCameraActivity extends AppCompatActivity implements View.OnClic
                 final Bitmap newBp = Bitmap.createBitmap(bp, 0, 0, bp.getWidth(), bp.getHeight(), matrix, true);
                 ByteArrayOutputStream bos = new ByteArrayOutputStream();
                 newBp.compress(Bitmap.CompressFormat.JPEG, 100, bos);
+                System.out.println(newBp.getWidth());
+                System.out.println(newBp.getHeight());
                 if (!isTake) {
                     isTake = true;
                     System.out.println(isTake);
