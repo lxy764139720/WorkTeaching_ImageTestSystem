@@ -148,7 +148,7 @@ public class HairAndGlassesActivity extends AppCompatActivity {
                 startActivity(new Intent(HairAndGlassesActivity.this, FaceResultActivity.class));
                 overridePendingTransition(R.anim.in_from_left, R.anim.out_from_right);
             }
-//返回值是重点：如果返回值是true则动作可以执行，如果是flase动作将无法执行
+            //返回值是重点：如果返回值是true则动作可以执行，如果是flase动作将无法执行
             return true;
         }
     }

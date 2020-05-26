@@ -18,6 +18,5 @@ public class User {
     public FaceType facetype;
     public String name;
     public String gender;
-    public String number;
     public String height;
 }

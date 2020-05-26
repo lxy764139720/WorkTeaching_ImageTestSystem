@@ -7,6 +7,7 @@ import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Toast;
 
 public class ComplexionActivity extends AppCompatActivity {
 
@@ -17,6 +18,7 @@ public class ComplexionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         View view = LayoutInflater.from(this).inflate(R.layout.activity_complexion, null);
         setContentView(view);
+        Toast.makeText(ComplexionActivity.this, "左滑可查看详情以及其他配件的推荐", Toast.LENGTH_LONG).show();
         gue = new GestureDetector(this, new MyGestureListener());
         int bg = -1;
         if ("m".equals(((MyApplication) getApplication()).user.gender)) {
@@ -64,16 +66,18 @@ public class ComplexionActivity extends AppCompatActivity {
             float startY = e1.getY();//通过e1.getY（）获得手指按下位置的纵坐标
             float endY = e2.getY();//通过e2.getY（）获得手指松开的纵坐标
             if ((startX - endX) > 50 && Math.abs(startY - endY) < 200) {
-                startActivity(new Intent(ComplexionActivity.this, HairTypeEndActivity.class));
+                MyApplication myApplication = (MyApplication) getApplication();
+                Intent intent = new Intent();
+                if (myApplication.user.gender.equals("w")) {
+                    intent.setClass(ComplexionActivity.this, WomanClothDetailsActivity.class);
+                } else {
+                    intent.setClass(ComplexionActivity.this, ManClothDetailsActivity.class);
+                }
+                startActivity(intent);
                 overridePendingTransition(R.anim.in_from_right, R.anim.out_from_left);
                 finish();
             }
-            if ((endX - startX) > 50 && Math.abs(startY - endY) < 200) {
-                startActivity(new Intent(ComplexionActivity.this, FaceResultActivity.class));
-                overridePendingTransition(R.anim.in_from_left, R.anim.out_from_right);
-                finish();
-            }
-//返回值是重点：如果返回值是true则动作可以执行，如果是flase动作将无法执行
+            //返回值是重点：如果返回值是true则动作可以执行，如果是flase动作将无法执行
             return true;
         }
     }

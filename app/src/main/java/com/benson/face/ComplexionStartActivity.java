@@ -27,16 +27,10 @@ public class ComplexionStartActivity extends AppCompatActivity {
             float startY = e1.getY();//通过e1.getY（）获得手指按下位置的纵坐标
             float endY = e2.getY();//通过e2.getY（）获得手指松开的纵坐标
             if ((startX - endX) > 50 && Math.abs(startY - endY) < 200) {
-//                startActivity(new Intent(ComplexionStartActivity.this,ComplexionActivity.class));
-//                overridePendingTransition(R.anim.in_from_right,R.anim.out_from_left);
-
+                startActivity(new Intent(ComplexionStartActivity.this,ComplexionActivity.class));
+                overridePendingTransition(R.anim.in_from_right,R.anim.out_from_left);
             }
-            if ((endX - startX) > 50 && Math.abs(startY - endY) < 200) {
-                startActivity(new Intent(ComplexionStartActivity.this, FaceResultActivity.class));
-                overridePendingTransition(R.anim.in_from_left, R.anim.out_from_right);
-                finish();
-            }
-//返回值是重点：如果返回值是true则动作可以执行，如果是flase动作将无法执行
+            //返回值是重点：如果返回值是true则动作可以执行，如果是flase动作将无法执行
             return true;
         }
     }

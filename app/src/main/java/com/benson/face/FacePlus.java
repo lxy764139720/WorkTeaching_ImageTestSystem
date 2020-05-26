@@ -59,11 +59,9 @@ public class FacePlus {
         conne.setRequestProperty("connection", "Keep-Alive");
         conne.setRequestProperty("user-agent", "Mozilla/4.0 (compatible;MSIE 6.0;Windows NT 5.1;SV1)");
         DataOutputStream obos = new DataOutputStream(conne.getOutputStream());
-        Iterator iter = map.entrySet().iterator();
-        while (iter.hasNext()) {
-            Map.Entry<String, String> entry = (Map.Entry) iter.next();
-            String key = entry.getKey();
-            String value = entry.getValue();
+        for (Map.Entry<String, String> stringStringEntry : map.entrySet()) {
+            String key = stringStringEntry.getKey();
+            String value = stringStringEntry.getValue();
             obos.writeBytes("--" + boundaryString + "\r\n");
             obos.writeBytes("Content-Disposition: form-data; name=\"" + key
                     + "\"\r\n");
@@ -71,9 +69,7 @@ public class FacePlus {
             obos.writeBytes(value + "\r\n");
         }
         if (fileMap != null && fileMap.size() > 0) {
-            Iterator fileIter = fileMap.entrySet().iterator();
-            while (fileIter.hasNext()) {
-                Map.Entry<String, byte[]> fileEntry = (Map.Entry<String, byte[]>) fileIter.next();
+            for (Map.Entry<String, byte[]> fileEntry : fileMap.entrySet()) {
                 obos.writeBytes("--" + boundaryString + "\r\n");
                 obos.writeBytes("Content-Disposition: form-data; name=\"" + fileEntry.getKey()
                         + "\"; filename=\"" + encode(" ") + "\"\r\n");
@@ -137,6 +133,7 @@ public class FacePlus {
             out.close();
             return out.toByteArray();
         } catch (IOException e) {
+            e.printStackTrace();
         }
         return null;
     }

@@ -21,15 +21,15 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="400dp"
-        android:layout_height="400dp"
-        android:layout_marginTop="130dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
             android:text="选择肤色"
             android:textColor="@android:color/white"
             android:textSize="30sp"
@@ -38,53 +38,58 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="80dp"
             android:layout_weight="1"
-            android:background="#ffffff">
+            android:background="#1A5398"
+            android:orientation="vertical">
 
             <Button
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="#aa535353"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginBottom="30dp"
+                android:background="#535353"
                 android:onClick="black"
-                android:text="偏黑"
+                android:text="偏黑色"
                 android:textColor="@android:color/white"
-                android:textSize="30sp" />
+                android:textSize="25sp" />
 
             <Button
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="#aaF4D696"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginBottom="30dp"
+                android:background="#F4D696"
                 android:onClick="wheat"
                 android:text="小麦色"
-                android:textSize="30sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:background="#ffffff">
+                android:textSize="25sp" />
 
             <Button
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="#aaE8BE92"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginBottom="30dp"
+                android:background="#E8BE92"
                 android:onClick="yellow"
                 android:text="偏黄色"
-                android:textSize="30sp" />
+                android:textSize="25sp" />
 
             <Button
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="#aaffffff"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:background="#ffffff"
                 android:onClick="white"
                 android:text="白皙"
-                android:textSize="30sp" />
+                android:textSize="25sp" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

@@ -1,6 +1,7 @@
 package com.benson.face;
 
 import android.app.AlertDialog;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -86,7 +87,7 @@ public class BodyCameraActivity extends AppCompatActivity implements View.OnClic
                                         }
                                     });
                                 } else {
-                                    Intent intent = new Intent(BodyCameraActivity.this, ShowClothActivity.class);
+                                    Intent intent = new Intent(BodyCameraActivity.this, ComplexionStartActivity.class);
                                     JSONObject body = json.getJSONArray("humanbodies").getJSONObject(0);
                                     JSONObject rec = body.getJSONObject("humanbody_rectangle");
                                     ((MyApplication) getApplication()).user.height = rec.getString("height");
@@ -103,7 +104,7 @@ public class BodyCameraActivity extends AppCompatActivity implements View.OnClic
                                 runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
-                                        new AlertDialog.Builder(BodyCameraActivity.this).setMessage("请重新拍摄").setCancelable(true).show();
+                                        new AlertDialog.Builder(BodyCameraActivity.this).setMessage("未检测到，请重新拍摄").setCancelable(true).show();
                                     }
                                 });
                             }

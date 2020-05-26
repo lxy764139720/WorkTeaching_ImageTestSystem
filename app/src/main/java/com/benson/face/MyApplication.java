@@ -20,25 +20,4 @@ public class MyApplication extends Application {
         context = getApplicationContext();
     }
 
-    public static int getPhotoRotationAngle() {
-        //SharedPreferences的本质是基于XML文件存储key-value键值对数据
-        SharedPreferences preference = PreferenceManager.getDefaultSharedPreferences(context);
-        String angle = preference.getString("photo_rotation_angle", "0");
-        assert angle != null;
-        return Integer.parseInt(angle);
-    }
-
-    public static int getCameraId() {
-        SharedPreferences preference = PreferenceManager.getDefaultSharedPreferences(context);
-        String angle = preference.getString("camera_id", "0");
-        assert angle != null;
-        return Integer.parseInt(angle);
-    }
-
-    public static void save(String key, String value) {
-        SharedPreferences preference = PreferenceManager.getDefaultSharedPreferences(context);
-        SharedPreferences.Editor editor = preference.edit();
-        editor.putString(key, value);
-        editor.apply();
-    }
 }

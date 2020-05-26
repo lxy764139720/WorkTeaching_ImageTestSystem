@@ -18,28 +18,18 @@ public class FaceppDetect {
         new Thread(new Runnable() {
             @Override
             public void run() {
-
-
                 //创建请求
-
-
-                byte[] arrays = bm;
                 FacePlus face = new FacePlus();
-
-                String str;
-                str = null;
+                String str = null;
                 try {
-                    str = face.main(arrays);
-                    // Log.e("TAG",str);
+                    str = face.main(bm);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
 
-
                 if (callBack != null) {
                     callBack.success(str);
                 }
-
             }
         }).start();
     }

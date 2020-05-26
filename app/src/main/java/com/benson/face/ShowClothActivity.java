@@ -32,16 +32,12 @@ public class ShowClothActivity extends AppCompatActivity {
         gender = myApplication.user.gender;
         if (arr == null) {
             arr = new int[3];
-            for (int i = 0; i < arr.length; i++) {
-                arr[i] = 0;
-            }
             Random random = new Random(System.currentTimeMillis());
             for (int i = 0; i < arr.length; i++) {
-                int num = 1;
-                while (true) {
+                int num;
+                do {
                     num = random.nextInt(8) + 1;
-                    if (num != arr[0] && num != arr[1] && num != arr[2]) break;
-                }
+                } while (num == arr[0] || num == arr[1] || num == arr[2]);
                 arr[i] = num;
             }
         }
@@ -70,7 +66,7 @@ public class ShowClothActivity extends AppCompatActivity {
         return null;
     }
 
-    private static final int getHeight(int height) {
+    private static int getHeight(int height) {
         if (height < 300) {
             return 160;
         } else if (height < 350) {
@@ -84,15 +80,11 @@ public class ShowClothActivity extends AppCompatActivity {
         } else {
             return 180;
         }
-
     }
 
     private String getManColor(String style) {
-        String color = null;
+        String color;
         switch (style) {
-            case "0":
-                color = "black";
-                break;
             case "1":
                 color = "blue";
                 break;
@@ -103,8 +95,6 @@ public class ShowClothActivity extends AppCompatActivity {
                 color = "gray2";
                 break;
             case "4":
-                color = "tibetan_blue";
-                break;
             case "5":
                 color = "tibetan_blue";
                 break;
@@ -116,7 +106,7 @@ public class ShowClothActivity extends AppCompatActivity {
     }
 
     private String getWomanColor(String style) {
-        String color = null;
+        String color;
         switch (style) {
             case "0":
                 color = "black_and_white";
@@ -132,9 +122,6 @@ public class ShowClothActivity extends AppCompatActivity {
                 break;
             case "4":
                 color = "OL";
-                break;
-            case "5":
-                color = "white";
                 break;
             default:
                 color = "white";
@@ -168,7 +155,7 @@ public class ShowClothActivity extends AppCompatActivity {
                     overridePendingTransition(R.anim.in_from_right, R.anim.out_from_left);
                 }
             }
-//返回值是重点：如果返回值是true则动作可以执行，如果是flase动作将无法执行
+            //返回值是重点：如果返回值是true则动作可以执行，如果是flase动作将无法执行
             return true;
         }
     }

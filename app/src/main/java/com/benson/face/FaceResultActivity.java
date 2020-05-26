@@ -169,7 +169,7 @@ public class FaceResultActivity extends AppCompatActivity {
                 }
             }
         } catch (JSONException e) {
-
+            e.printStackTrace();
         }
         return -1;
     }
@@ -202,7 +202,7 @@ public class FaceResultActivity extends AppCompatActivity {
                 startActivity(new Intent(FaceResultActivity.this, HairAndGlassesActivity.class));
                 overridePendingTransition(R.anim.in_from_right, R.anim.out_from_left);
             }
-//返回值是重点：如果返回值是true则动作可以执行，如果是flase动作将无法执行
+            //返回值是重点：如果返回值是true则动作可以执行，如果是flase动作将无法执行
             return true;
         }
     }

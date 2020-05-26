@@ -28,7 +28,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SelectUserTypeActivity" />
         <activity android:name=".StudentLoginActivity" />
         <activity android:name=".SelectModelActivity" />
         <activity android:name=".FaceCameraActivity" />

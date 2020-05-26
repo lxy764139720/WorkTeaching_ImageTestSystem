@@ -15,15 +15,9 @@ import java.io.InputStream;
 
 public class ManClothDetailsActivity extends AppCompatActivity {
     private int index;
-    public static Bitmap bp;
     private int[] arr;
     private String style;
     private GestureDetector gue;
-
-    private String shoes = "shoes";
-    private String necktie = "necktie";
-    private String wristwatch = "wrist_watch";
-    private String briefcase = "brief_case";
 
     private TextView descriptionText;
 
@@ -43,21 +37,25 @@ public class ManClothDetailsActivity extends AppCompatActivity {
         arr = getIntent().getIntArrayExtra("arr");
         style = getIntent().getStringExtra("style");
         clothsImg.setImageBitmap(getClothImg(myApplication.user.height, index));
+        String shoes = "shoes";
         shoesImg.setImageBitmap(getOtherImg(shoes));
+        String necktie = "necktie";
         necktieImg.setImageBitmap(getOtherImg(necktie));
+        String wristwatch = "wrist_watch";
         wristWatchImg.setImageBitmap(getOtherImg(wristwatch));
+        String briefcase = "brief_case";
         briefCaseImg.setImageBitmap(getOtherImg(briefcase));
         descriptionText.setText(getDescription());//获取strings.xml里的服装描述文本信息
         gue = new GestureDetector(ManClothDetailsActivity.this, new ManClothDetailsActivity.MyGestureListener());
     }
 
     private void initView() {
-        clothsImg = (ImageView) findViewById(R.id.cloths);
-        shoesImg = (ImageView) findViewById(R.id.shoes);
-        necktieImg = (ImageView) findViewById(R.id.necktie);
-        wristWatchImg = (ImageView) findViewById(R.id.wristwatch);
-        briefCaseImg = (ImageView) findViewById(R.id.briefcase);
-        descriptionText = (TextView) findViewById(R.id.description);
+        clothsImg = findViewById(R.id.cloths);
+        shoesImg = findViewById(R.id.shoes);
+        necktieImg = findViewById(R.id.necktie);
+        wristWatchImg = findViewById(R.id.wristwatch);
+        briefCaseImg = findViewById(R.id.briefcase);
+        descriptionText = findViewById(R.id.description);
     }
 
     private Bitmap getClothImg(String height, int index) {
@@ -86,7 +84,7 @@ public class ManClothDetailsActivity extends AppCompatActivity {
         return null;
     }
 
-    private static final int getHeight(int height) {
+    private static int getHeight(int height) {
         if (height < 300) {
             return 160;
         } else if (height < 350) {
@@ -103,13 +101,10 @@ public class ManClothDetailsActivity extends AppCompatActivity {
     }
 
     private String getManColor(String style) {
-        String color = null;
+        String color;
         switch (style) {
             case "0":
                 color = "black";
-                break;
-            case "1":
-                color = "blue";
                 break;
             case "2":
                 color = "gray";
@@ -118,8 +113,6 @@ public class ManClothDetailsActivity extends AppCompatActivity {
                 color = "gray2";
                 break;
             case "4":
-                color = "tibetan_blue";
-                break;
             case "5":
                 color = "tibetan_blue";
                 break;
@@ -131,13 +124,10 @@ public class ManClothDetailsActivity extends AppCompatActivity {
     }
 
     private String getDescription() {
-        String description = null;
+        String description;
         switch (style) {
             case "0":
                 description = (String) this.getResources().getText(R.string.des_man_black);
-                break;
-            case "1":
-                description = (String) this.getResources().getText(R.string.des_man_blue);
                 break;
             case "2":
                 description = (String) this.getResources().getText(R.string.des_man_gray);
@@ -146,8 +136,6 @@ public class ManClothDetailsActivity extends AppCompatActivity {
                 description = (String) this.getResources().getText(R.string.des_man_gray2);
                 break;
             case "4":
-                description = (String) this.getResources().getText(R.string.des_man_tibetan_blue);
-                break;
             case "5":
                 description = (String) this.getResources().getText(R.string.des_man_tibetan_blue);
                 break;
@@ -174,7 +162,7 @@ public class ManClothDetailsActivity extends AppCompatActivity {
                 startActivity(intent);
                 overridePendingTransition(R.anim.in_from_right, R.anim.out_from_left);
             }//左滑
-//返回值是重点：如果返回值是true则动作可以执行，如果是flase动作将无法执行
+            //返回值是重点：如果返回值是true则动作可以执行，如果是flase动作将无法执行
             return true;
         }
     }

@@ -15,14 +15,9 @@ import java.io.InputStream;
 
 public class WomanClothDetailsActivity extends AppCompatActivity {
     private int index;
-    public static Bitmap bp;
     private int[] arr;
     private String style;
     private GestureDetector gue;
-
-    private String shoes = "shoes";
-    private String wristwatch = "wrist_watch";
-    private String briefcase = "brief_case";
 
     private TextView descriptionText;
 
@@ -41,19 +36,22 @@ public class WomanClothDetailsActivity extends AppCompatActivity {
         arr = getIntent().getIntArrayExtra("arr");
         style = getIntent().getStringExtra("style");
         clothsImg.setImageBitmap(getClothImg(myApplication.user.gender, myApplication.user.height, index));
+        String shoes = "shoes";
         shoesImg.setImageBitmap(getOtherImg(myApplication.user.gender, shoes));
+        String wristwatch = "wrist_watch";
         wristWatchImg.setImageBitmap(getOtherImg(myApplication.user.gender, wristwatch));
+        String briefcase = "brief_case";
         briefCaseImg.setImageBitmap(getOtherImg(myApplication.user.gender, briefcase));
         descriptionText.setText(getDescription());//获取strings.xml里的服装描述文本信息
         gue = new GestureDetector(WomanClothDetailsActivity.this, new WomanClothDetailsActivity.MyGestureListener());
     }
 
     private void initView() {
-        clothsImg = (ImageView) findViewById(R.id.cloths);
-        shoesImg = (ImageView) findViewById(R.id.shoes);
-        wristWatchImg = (ImageView) findViewById(R.id.wristwatch);
-        briefCaseImg = (ImageView) findViewById(R.id.briefcase);
-        descriptionText = (TextView) findViewById(R.id.description);
+        clothsImg = findViewById(R.id.cloths);
+        shoesImg = findViewById(R.id.shoes);
+        wristWatchImg = findViewById(R.id.wristwatch);
+        briefCaseImg = findViewById(R.id.briefcase);
+        descriptionText = findViewById(R.id.description);
     }
 
     private Bitmap getClothImg(String gender, String height, int index) {
@@ -90,7 +88,7 @@ public class WomanClothDetailsActivity extends AppCompatActivity {
         return null;
     }
 
-    private static final int getHeight(int height) {
+    private static int getHeight(int height) {
         if (height < 300) {
             return 160;
         } else if (height < 350) {
@@ -107,7 +105,7 @@ public class WomanClothDetailsActivity extends AppCompatActivity {
     }
 
     private String getWomanColor(String style) {
-        String color = null;
+        String color;
         switch (style) {
             case "0":
                 color = "black_and_white";
@@ -124,9 +122,6 @@ public class WomanClothDetailsActivity extends AppCompatActivity {
             case "4":
                 color = "OL";
                 break;
-            case "5":
-                color = "white";
-                break;
             default:
                 color = "white";
                 break;
@@ -135,7 +130,7 @@ public class WomanClothDetailsActivity extends AppCompatActivity {
     }
 
     private String getDescription() {
-        String description = null;
+        String description;
         switch (style) {
             case "0":
                 description = (String) this.getResources().getText(R.string.des_woman_black_and_white);
@@ -151,9 +146,6 @@ public class WomanClothDetailsActivity extends AppCompatActivity {
                 break;
             case "4":
                 description = (String) this.getResources().getText(R.string.des_woman_OL);
-                break;
-            case "5":
-                description = (String) this.getResources().getText(R.string.des_woman_white);
                 break;
             default:
                 description = (String) this.getResources().getText(R.string.des_woman_white);
