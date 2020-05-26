@@ -9,8 +9,13 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Toast;
 
+import java.util.Random;
+
 public class ComplexionActivity extends AppCompatActivity {
 
+    private int index;
+    private int[] arr;
+    private String style;
     private GestureDetector gue;
 
     @Override
@@ -55,6 +60,21 @@ public class ComplexionActivity extends AppCompatActivity {
             }
         }
         view.setBackgroundResource(bg);
+        index = getIntent().getIntExtra("index", 0);
+        arr = getIntent().getIntArrayExtra("arr");
+        if (arr == null) {
+            arr = new int[3];
+            Random random = new Random(System.currentTimeMillis());
+            for (int i = 0; i < arr.length; i++) {
+                int num;
+                do {
+                    num = random.nextInt(8) + 1;
+                } while (num == arr[0] || num == arr[1] || num == arr[2]);
+                arr[i] = num;
+            }
+        }
+        Random random = new Random(System.currentTimeMillis());
+        style = random.nextInt(6) + "";
     }
 
     class MyGestureListener extends GestureDetector.SimpleOnGestureListener {
@@ -73,6 +93,9 @@ public class ComplexionActivity extends AppCompatActivity {
                 } else {
                     intent.setClass(ComplexionActivity.this, ManClothDetailsActivity.class);
                 }
+                intent.putExtra("index", index);
+                intent.putExtra("arr", arr);
+                intent.putExtra("style", style);
                 startActivity(intent);
                 overridePendingTransition(R.anim.in_from_right, R.anim.out_from_left);
                 finish();
