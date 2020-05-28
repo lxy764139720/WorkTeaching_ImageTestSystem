@@ -36,7 +36,7 @@ public class ManClothDetailsActivity extends AppCompatActivity {
         index = getIntent().getIntExtra("index", 0);
         arr = getIntent().getIntArrayExtra("arr");
         style = getIntent().getStringExtra("style");
-        clothsImg.setImageBitmap(getClothImg(myApplication.user.height, index));
+        clothsImg.setImageBitmap(getClothImg(Integer.toString(myApplication.user.height), index));
         String shoes = "shoes";
         shoesImg.setImageBitmap(getOtherImg(shoes));
         String necktie = "necktie";

@@ -18,5 +18,9 @@ public class User {
     public FaceType facetype;
     public String name;
     public String gender;
-    public String height;
+    public int height;//身高
+    public int shoulder;//肩围
+    public int hip;//臀围
+    public int waist;//腰围
+    public int weight;//体重
 }

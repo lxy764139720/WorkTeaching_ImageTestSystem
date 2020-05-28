@@ -35,7 +35,7 @@ public class WomanClothDetailsActivity extends AppCompatActivity {
         index = getIntent().getIntExtra("index", 0);
         arr = getIntent().getIntArrayExtra("arr");
         style = getIntent().getStringExtra("style");
-        clothsImg.setImageBitmap(getClothImg(myApplication.user.gender, myApplication.user.height, index));
+        clothsImg.setImageBitmap(getClothImg(myApplication.user.gender, Integer.toString(myApplication.user.height), index));
         String shoes = "shoes";
         shoesImg.setImageBitmap(getOtherImg(myApplication.user.gender, shoes));
         String wristwatch = "wrist_watch";

@@ -3,11 +3,12 @@
     package="com.benson.face">
 
     <!--权限申请 相机-->
-    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.CAMERA" />
     <!--使用uses-feature指定需要相机资源-->
-    <uses-feature android:name="android.hardware.Camera"/>
+    <uses-feature android:name="android.hardware.Camera" />
     <!--需要自动聚焦 -->
-    <uses-feature android:name="android.hardware.camera.autofocus"/>
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
@@ -28,7 +29,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".StudentLoginActivity" />
+        <activity android:name=".LoginActivity" />
         <activity android:name=".SelectModelActivity" />
         <activity android:name=".FaceCameraActivity" />
         <activity android:name=".FaceResultActivity" />
@@ -36,7 +37,6 @@
         <activity android:name=".ComplexionActivity" />
         <activity android:name=".ClothEndActivity" />
         <activity android:name=".BodyCameraActivity" />
-        <activity android:name=".ShowClothActivity" />
         <activity android:name=".HairTypeEndActivity" />
         <activity android:name=".HairAndGlassesActivity" />
     </application>

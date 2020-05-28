@@ -9,21 +9,47 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Toast;
+
+import java.util.Objects;
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);//隐藏状态栏
+        Random random = new Random(System.currentTimeMillis());
+        final int bgNumber = random.nextInt(3) + 1;
+        final String bgName = "start" + bgNumber;
+        int bgID = getResources().getIdentifier(bgName, "drawable", "com.benson.face");
+        getWindow().getDecorView().setBackgroundResource(bgID);
         setContentView(R.layout.activity_main);
         //动态申请权限
         checkNeedPermissions();
+        Thread myThread = new Thread() {//创建子线程
+            @Override
+            public void run() {
+                try {
+                    sleep(3000);//使程序休眠三秒
+                    Intent it = new Intent(getApplicationContext(), LoginActivity.class);//启动LoginActivity
+                    it.putExtra("bgNumber", bgNumber);
+                    startActivity(it);
+                    finish();//关闭当前活动
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        myThread.start();//启动线程
     }
 
     public void next(View view) {
-        startActivity(new Intent(MainActivity.this, StudentLoginActivity.class));
+        startActivity(new Intent(MainActivity.this, LoginActivity.class));
         overridePendingTransition(R.anim.in_from_right, R.anim.out_from_left);
     }
 

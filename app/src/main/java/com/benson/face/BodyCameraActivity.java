@@ -90,7 +90,7 @@ public class BodyCameraActivity extends AppCompatActivity implements View.OnClic
                                     Intent intent = new Intent(BodyCameraActivity.this, ComplexionStartActivity.class);
                                     JSONObject body = json.getJSONArray("humanbodies").getJSONObject(0);
                                     JSONObject rec = body.getJSONObject("humanbody_rectangle");
-                                    ((MyApplication) getApplication()).user.height = rec.getString("height");
+                                    ((MyApplication) getApplication()).user.height = Integer.parseInt(rec.getString("height"));
                                     intent.putExtra("top", rec.getInt("top"));
                                     intent.putExtra("left", rec.getInt("left"));
                                     intent.putExtra("width", rec.getInt("width"));
