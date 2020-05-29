@@ -10,6 +10,7 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -17,11 +18,6 @@ import java.io.InputStream;
 public class HairAndGlassesActivity extends AppCompatActivity {
 
     private GestureDetector gue;
-
-    private String hair = "hair";
-    private String glasses = "glasses";
-    private String gender = "gender";
-    private User.FaceType faceType = null;
 
     private TextView hairDesText;
     private TextView glassesDesText;
@@ -35,20 +31,23 @@ public class HairAndGlassesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_hairandglasses);
         initView();
         MyApplication myApplication = (MyApplication) getApplication();
-        gender = myApplication.user.gender;
-        faceType = myApplication.user.facetype;
+        String gender = myApplication.user.gender;
+        User.FaceType faceType = myApplication.user.facetype;
+        String hair = "hair";
         hairImg.setImageBitmap(getImg(hair, gender, faceType));
+        String glasses = "glasses";
         glassesImg.setImageBitmap(getImg(glasses, gender, faceType));
         hairDesText.setText(getDescription(hair, gender, faceType));
         glassesDesText.setText(getDescription(glasses, gender, faceType));
+        Toast.makeText(HairAndGlassesActivity.this, "左滑可返回主界面", Toast.LENGTH_LONG).show();
         gue = new GestureDetector(HairAndGlassesActivity.this, new MyGestureListener());
     }
 
     private void initView() {
-        hairImg = (ImageView) findViewById(R.id.hair);
-        glassesImg = (ImageView) findViewById(R.id.glasses);
-        hairDesText = (TextView) findViewById(R.id.hairDes);
-        glassesDesText = (TextView) findViewById(R.id.glassesDes);
+        hairImg = findViewById(R.id.hair);
+        glassesImg = findViewById(R.id.glasses);
+        hairDesText = findViewById(R.id.hairDes);
+        glassesDesText = findViewById(R.id.glassesDes);
     }
 
     private Bitmap getImg(String item, String gender, User.FaceType faceType) {
@@ -141,7 +140,7 @@ public class HairAndGlassesActivity extends AppCompatActivity {
             float startY = e1.getY();//通过e1.getY（）获得手指按下位置的纵坐标
             float endY = e2.getY();//通过e2.getY（）获得手指松开的纵坐标
             if ((startX - endX) > 50 && Math.abs(startY - endY) < 200) {
-                startActivity(new Intent(HairAndGlassesActivity.this, HairTypeEndActivity.class));
+                startActivity(new Intent(HairAndGlassesActivity.this, SelectModelActivity.class));
                 overridePendingTransition(R.anim.in_from_right, R.anim.out_from_left);
             }
             if ((endX - startX) > 50 && Math.abs(startY - endY) < 200) {

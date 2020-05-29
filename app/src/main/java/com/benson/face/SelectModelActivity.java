@@ -39,18 +39,18 @@ public class SelectModelActivity extends AppCompatActivity {
             public void onItemClick(View view, int position) {
                 switch (position) {
                     case 0:
-                        Toast.makeText(SelectModelActivity.this, "发型推荐", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SelectModelActivity.this, "请对准脸部拍照", Toast.LENGTH_SHORT).show();
                         selectFace(view);
                         break;
                     case 1:
-                        Toast.makeText(SelectModelActivity.this, "求职正装", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SelectModelActivity.this, "请对准全身拍照", Toast.LENGTH_SHORT).show();
                         selectBody(view);
                         break;
                     case 2:
-                        Toast.makeText(SelectModelActivity.this, "约会穿搭", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SelectModelActivity.this, "请对准全身拍照", Toast.LENGTH_SHORT).show();
                         break;
                     case 3:
-                        Toast.makeText(SelectModelActivity.this, "日常穿搭", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SelectModelActivity.this, "请对准全身拍照", Toast.LENGTH_SHORT).show();
                         break;
                     default:
                         break;

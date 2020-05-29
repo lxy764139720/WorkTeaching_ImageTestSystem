@@ -43,12 +43,15 @@
                 android:id="@+id/faceName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="50sp" />
+                android:layout_margin="10dp"
+                android:layout_gravity="center"
+                android:textSize="30sp" />
 
             <ImageView
                 android:id="@+id/faceImg_1"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
+                android:layout_marginBottom="10dp"
                 android:background="#00ffffff"
                 android:scaleType="centerInside" />
         </LinearLayout>
@@ -63,6 +66,7 @@
         material:cardCornerRadius="5dp">
 
         <LinearLayout
+            android:id="@+id/hairLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -72,7 +76,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|top"
                 android:layout_margin="10dp"
-                android:text="> 发型推荐 <"
+                android:text="@string/HAIR_REC"
                 android:textSize="20sp" />
 
             <ImageView
@@ -92,7 +96,9 @@
                 android:id="@+id/faceDes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
                 android:lineSpacingExtra="5dp"
                 android:textSize="15sp" />
         </LinearLayout>

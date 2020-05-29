@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:material="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#1a5398"
     android:orientation="vertical">
 
     <android.support.v7.widget.Toolbar
@@ -24,90 +24,102 @@
             android:textSize="20sp" />
     </android.support.v7.widget.Toolbar>
 
-    <LinearLayout
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:orientation="vertical">
+        android:layout_margin="5dp"
+        android:foreground="?android:attr/selectableItemBackground"
+        app:cardElevation="15dp"
+        material:cardCornerRadius="5dp">
 
-        <TextView
-            android:id="@+id/hairTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="发型推荐"
-            android:layout_margin="10dp"
-            android:textColor="#fff"
-            android:textSize="30sp" />
-
-        <ImageView
-            android:id="@+id/hair"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="80dp"
-            android:layout_marginRight="80dp"
-            android:layout_weight="3"
-            android:scaleType="fitCenter" />
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_margin="10dp"
-            android:layout_weight="3">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <TextView
-                android:id="@+id/hairDes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|top"
+                android:layout_margin="10dp"
+                android:text="@string/HAIR_REC"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/hair"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:lineSpacingExtra="5dp"
-                android:textColor="#fff"
-                android:textSize="15sp"
-                tools:text="@string/des_hair_man_ling" />
-        </ScrollView>
+                android:layout_marginLeft="80dp"
+                android:layout_marginRight="80dp"
+                android:layout_weight="3"
+                android:scaleType="fitCenter" />
 
-    </LinearLayout>
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="10dp"
+                android:layout_weight="3">
 
-    <LinearLayout
+                <TextView
+                    android:id="@+id/hairDes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingExtra="5dp"
+                    android:textSize="15sp"
+                    tools:text="@string/des_hair_man_ling" />
+            </ScrollView>
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:orientation="vertical">
+        android:layout_margin="5dp"
+        android:foreground="?android:attr/selectableItemBackground"
+        app:cardElevation="15dp"
+        material:cardCornerRadius="5dp">
 
-        <TextView
-            android:id="@+id/glassesTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="10dp"
-            android:text="眼镜推荐"
-            android:textColor="#fff"
-            android:textSize="30sp" />
-
-        <ImageView
-            android:id="@+id/glasses"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginLeft="80dp"
-            android:layout_marginRight="80dp"
-            android:layout_weight="3"
-            android:scaleType="fitCenter" />
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_margin="10dp"
-            android:layout_weight="3">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <TextView
-                android:id="@+id/glassesDes"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:lineSpacingExtra="5dp"
-                android:textColor="#fff"
-                android:textSize="15sp"
-                tools:text="@string/des_glasses_ling" />
-        </ScrollView>
+                android:layout_gravity="center|top"
+                android:layout_margin="10dp"
+                android:text="@string/GLASS_REC"
+                android:textSize="20sp" />
 
-    </LinearLayout>
+            <ImageView
+                android:id="@+id/glasses"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginLeft="80dp"
+                android:layout_marginRight="80dp"
+                android:layout_weight="3"
+                android:scaleType="fitCenter" />
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="10dp"
+                android:layout_weight="3">
+
+                <TextView
+                    android:id="@+id/glassesDes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingExtra="5dp"
+                    android:textSize="15sp"
+                    tools:text="@string/des_glasses_ling" />
+            </ScrollView>
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
 
 </LinearLayout>

@@ -30,14 +30,15 @@
             </intent-filter>
         </activity>
         <activity android:name=".LoginActivity" />
-        <activity android:name=".SelectModelActivity" />
+        <activity
+            android:name=".SelectModelActivity"
+            android:launchMode="singleTask" />
         <activity android:name=".FaceCameraActivity" />
         <activity android:name=".FaceResultActivity" />
         <activity android:name=".ComplexionStartActivity" />
         <activity android:name=".ComplexionActivity" />
         <activity android:name=".ClothEndActivity" />
         <activity android:name=".BodyCameraActivity" />
-        <activity android:name=".HairTypeEndActivity" />
         <activity android:name=".HairAndGlassesActivity" />
     </application>
 

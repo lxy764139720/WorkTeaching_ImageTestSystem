@@ -20,7 +20,7 @@ import org.json.JSONObject;
 
 public class FaceResultActivity extends AppCompatActivity {
 
-    private LinearLayout rootView;
+    private LinearLayout hairLayout;
 
     private GestureDetector gue;
 
@@ -181,7 +181,7 @@ public class FaceResultActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_face_result);
-        rootView = findViewById(R.id.rootView);
+        hairLayout = findViewById(R.id.hairLayout);
         TextView faceName = findViewById(R.id.faceName);
         ImageView faceImg_1 = findViewById(R.id.faceImg_1);
         ImageView faceImg_2 = findViewById(R.id.faceImg_2);
@@ -235,18 +235,38 @@ public class FaceResultActivity extends AppCompatActivity {
                     switch (((MyApplication) getApplication()).user.facetype) {
                         case FANG:
                             faceName.setText("方脸");
+                            faceImg_1.setImageResource(R.drawable.w_fang);
+                            hairLayout.removeView(faceImg_2);
+                            hairLayout.removeView(faceImg_3);
+                            faceDes.setText(this.getResources().getText(R.string.w_fang));
                             break;
                         case CHANG:
                             faceName.setText("长脸");
+                            faceImg_1.setImageResource(R.drawable.w_chang);
+                            hairLayout.removeView(faceImg_2);
+                            hairLayout.removeView(faceImg_3);
+                            faceDes.setText(this.getResources().getText(R.string.w_chang));
                             break;
                         case LING:
                             faceName.setText("菱形脸");
+                            faceImg_1.setImageResource(R.drawable.w_ling);
+                            hairLayout.removeView(faceImg_2);
+                            hairLayout.removeView(faceImg_3);
+                            faceDes.setText(this.getResources().getText(R.string.w_ling));
                             break;
                         case EDAN:
                             faceName.setText("鹅蛋脸");
+                            faceImg_1.setImageResource(R.drawable.w_edan);
+                            hairLayout.removeView(faceImg_2);
+                            hairLayout.removeView(faceImg_3);
+                            faceDes.setText(this.getResources().getText(R.string.w_edan));
                             break;
                         case YUAN:
                             faceName.setText("圆脸");
+                            faceImg_1.setImageResource(R.drawable.w_yuan);
+                            hairLayout.removeView(faceImg_2);
+                            hairLayout.removeView(faceImg_3);
+                            faceDes.setText(this.getResources().getText(R.string.w_yuan));
                             break;
                         default:
                             break;
@@ -256,27 +276,28 @@ public class FaceResultActivity extends AppCompatActivity {
             Toast.makeText(FaceResultActivity.this, "左滑可查看详情以及其他配件的推荐", Toast.LENGTH_LONG).show();
             gue = new GestureDetector(FaceResultActivity.this, new MyGestureListener());
         }
+    }
 
-        class MyGestureListener extends GestureDetector.SimpleOnGestureListener {
-            //onFling方法的第一个参数是 手指按下的位置， 第二个参数是 手指松开的位置，第三个参数是手指的速度
-            @Override
-            public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-                float startX = e1.getX();//通过e1.getX（）获得手指按下位置的横坐标
-                float endX = e2.getX();//通过e2.getX（）获得手指松开位置的横坐标
-                float startY = e1.getY();//通过e1.getY（）获得手指按下位置的纵坐标
-                float endY = e2.getY();//通过e2.getY（）获得手指松开的纵坐标
-                if ((startX - endX) > 50 && Math.abs(startY - endY) < 200) {
-                    startActivity(new Intent(FaceResultActivity.this, HairAndGlassesActivity.class));
-                    overridePendingTransition(R.anim.in_from_right, R.anim.out_from_left);
-                }
-                //返回值是重点：如果返回值是true则动作可以执行，如果是flase动作将无法执行
-                return true;
-            }
-        }
-
+    class MyGestureListener extends GestureDetector.SimpleOnGestureListener {
+        //onFling方法的第一个参数是 手指按下的位置， 第二个参数是 手指松开的位置，第三个参数是手指的速度
         @Override
-        public boolean onTouchEvent (MotionEvent event){
-            gue.onTouchEvent(event);
-            return super.onTouchEvent(event);
+        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+            float startX = e1.getX();//通过e1.getX（）获得手指按下位置的横坐标
+            float endX = e2.getX();//通过e2.getX（）获得手指松开位置的横坐标
+            float startY = e1.getY();//通过e1.getY（）获得手指按下位置的纵坐标
+            float endY = e2.getY();//通过e2.getY（）获得手指松开的纵坐标
+            if ((startX - endX) > 50 && Math.abs(startY - endY) < 200) {
+                startActivity(new Intent(FaceResultActivity.this, HairAndGlassesActivity.class));
+                overridePendingTransition(R.anim.in_from_right, R.anim.out_from_left);
+            }
+            //返回值是重点：如果返回值是true则动作可以执行，如果是flase动作将无法执行
+            return true;
         }
     }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        gue.onTouchEvent(event);
+        return super.onTouchEvent(event);
+    }
+}
