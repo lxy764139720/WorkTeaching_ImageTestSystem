@@ -1,6 +1,7 @@
 package com.benson.face;
 
 import android.content.Intent;
+import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,7 +9,9 @@ import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -75,7 +78,7 @@ public class FaceResultActivity extends AppCompatActivity {
     }
 
 
-    public int faceType(String jsonStr) {
+    public String faceType(String jsonStr) {
         try {
             JSONObject object = new JSONObject(jsonStr);
             JSONArray faces = object.getJSONArray("faces");
@@ -127,51 +130,51 @@ public class FaceResultActivity extends AppCompatActivity {
                 if (result_weithfae < 1.25) {
                     //方脸
                     ((MyApplication) getApplication()).user.facetype = User.FaceType.FANG;
-                    return R.drawable.face1_2;
+                    return "m_fang";
                 } else if (result_longface > 1) {
                     //长脸
                     ((MyApplication) getApplication()).user.facetype = User.FaceType.CHANG;
-                    return R.drawable.face1_4;
+                    return "m_chang";
                 } else if (result_Angle < 87) {
                     //菱形脸
                     ((MyApplication) getApplication()).user.facetype = User.FaceType.LING;
-                    return R.drawable.face1_5;
+                    return "m_ling";
                 } else if (result_Angle >= 87 && result_Angle < 92) {
                     //鹅蛋脸
                     ((MyApplication) getApplication()).user.facetype = User.FaceType.EDAN;
-                    return R.drawable.face1_1;
+                    return "m_edan";
                 } else {
                     //圆脸
                     ((MyApplication) getApplication()).user.facetype = User.FaceType.YUAN;
-                    return R.drawable.face1_3;
+                    return "m_yuan";
                 }
             } else {
                 if (result_weithfae < 1.25) {
                     //方脸
                     ((MyApplication) getApplication()).user.facetype = User.FaceType.FANG;
-                    return R.drawable.face2_1;
+                    return "w_fang";
                 } else if (result_longface > 1) {
                     //长脸
                     ((MyApplication) getApplication()).user.facetype = User.FaceType.CHANG;
-                    return R.drawable.face2_4;
+                    return "w_chang";
                 } else if (result_Angle < 87) {
                     //菱形脸
                     ((MyApplication) getApplication()).user.facetype = User.FaceType.LING;
-                    return R.drawable.face2_3;
+                    return "w_ling";
                 } else if (result_Angle >= 87 && result_Angle < 92) {
                     //鹅蛋脸
                     ((MyApplication) getApplication()).user.facetype = User.FaceType.EDAN;
-                    return R.drawable.face2_5;
+                    return "w_edan";
                 } else {
                     //圆脸
                     ((MyApplication) getApplication()).user.facetype = User.FaceType.YUAN;
-                    return R.drawable.face2_2;
+                    return "w_yuan";
                 }
             }
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        return -1;
+        return "";
     }
 
     @Override
@@ -179,37 +182,101 @@ public class FaceResultActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_face_result);
         rootView = findViewById(R.id.rootView);
+        TextView faceName = findViewById(R.id.faceName);
+        ImageView faceImg_1 = findViewById(R.id.faceImg_1);
+        ImageView faceImg_2 = findViewById(R.id.faceImg_2);
+        ImageView faceImg_3 = findViewById(R.id.faceImg_3);
+        TextView faceDes = findViewById(R.id.faceDes);
         String result = ((MyApplication) getApplication()).faceResult;
         if (result != null) {
-            int face = faceType(result);
-            if (face != -1) {
-                rootView.setBackgroundResource(face);  //设置返回结果为背景
+            String face = faceType(result);
+            if (!face.equals("")) {
+                if ("m".equals(((MyApplication) getApplication()).user.gender)) {
+                    switch (((MyApplication) getApplication()).user.facetype) {
+                        case FANG:
+                            faceName.setText("方脸");
+                            faceImg_1.setImageResource(R.drawable.m_fang_1);
+                            faceImg_2.setImageResource(R.drawable.m_fang_2);
+                            faceImg_3.setImageResource(R.drawable.m_fang_3);
+                            faceDes.setText(this.getResources().getText(R.string.m_fang));
+                            break;
+                        case CHANG:
+                            faceName.setText("长脸");
+                            faceImg_1.setImageResource(R.drawable.m_chang_1);
+                            faceImg_2.setImageResource(R.drawable.m_chang_2);
+                            faceImg_3.setImageResource(R.drawable.m_chang_3);
+                            faceDes.setText(this.getResources().getText(R.string.m_chang));
+                            break;
+                        case LING:
+                            faceName.setText("菱形脸");
+                            faceImg_1.setImageResource(R.drawable.m_ling_1);
+                            faceImg_2.setImageResource(R.drawable.m_ling_2);
+                            faceImg_3.setImageResource(R.drawable.m_ling_3);
+                            faceDes.setText(this.getResources().getText(R.string.m_ling));
+                            break;
+                        case EDAN:
+                            faceName.setText("鹅蛋脸");
+                            faceImg_1.setImageResource(R.drawable.m_edan_1);
+                            faceImg_2.setImageResource(R.drawable.m_edan_2);
+                            faceImg_3.setImageResource(R.drawable.m_edan_3);
+                            faceDes.setText(this.getResources().getText(R.string.m_edan));
+                            break;
+                        case YUAN:
+                            faceName.setText("圆脸");
+                            faceImg_1.setImageResource(R.drawable.m_yuan_1);
+                            faceImg_2.setImageResource(R.drawable.m_yuan_2);
+                            faceImg_3.setImageResource(R.drawable.m_yuan_3);
+                            faceDes.setText(this.getResources().getText(R.string.m_yuan));
+                            break;
+                        default:
+                            break;
+                    }
+                } else {
+                    switch (((MyApplication) getApplication()).user.facetype) {
+                        case FANG:
+                            faceName.setText("方脸");
+                            break;
+                        case CHANG:
+                            faceName.setText("长脸");
+                            break;
+                        case LING:
+                            faceName.setText("菱形脸");
+                            break;
+                        case EDAN:
+                            faceName.setText("鹅蛋脸");
+                            break;
+                        case YUAN:
+                            faceName.setText("圆脸");
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+            Toast.makeText(FaceResultActivity.this, "左滑可查看详情以及其他配件的推荐", Toast.LENGTH_LONG).show();
+            gue = new GestureDetector(FaceResultActivity.this, new MyGestureListener());
+        }
+
+        class MyGestureListener extends GestureDetector.SimpleOnGestureListener {
+            //onFling方法的第一个参数是 手指按下的位置， 第二个参数是 手指松开的位置，第三个参数是手指的速度
+            @Override
+            public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+                float startX = e1.getX();//通过e1.getX（）获得手指按下位置的横坐标
+                float endX = e2.getX();//通过e2.getX（）获得手指松开位置的横坐标
+                float startY = e1.getY();//通过e1.getY（）获得手指按下位置的纵坐标
+                float endY = e2.getY();//通过e2.getY（）获得手指松开的纵坐标
+                if ((startX - endX) > 50 && Math.abs(startY - endY) < 200) {
+                    startActivity(new Intent(FaceResultActivity.this, HairAndGlassesActivity.class));
+                    overridePendingTransition(R.anim.in_from_right, R.anim.out_from_left);
+                }
+                //返回值是重点：如果返回值是true则动作可以执行，如果是flase动作将无法执行
+                return true;
             }
         }
-        Toast.makeText(FaceResultActivity.this, "左滑可查看详情以及其他配件的推荐", Toast.LENGTH_LONG).show();
-        gue = new GestureDetector(FaceResultActivity.this, new MyGestureListener());
-    }
 
-    class MyGestureListener extends GestureDetector.SimpleOnGestureListener {
-        //onFling方法的第一个参数是 手指按下的位置， 第二个参数是 手指松开的位置，第三个参数是手指的速度
         @Override
-        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-            float startX = e1.getX();//通过e1.getX（）获得手指按下位置的横坐标
-            float endX = e2.getX();//通过e2.getX（）获得手指松开位置的横坐标
-            float startY = e1.getY();//通过e1.getY（）获得手指按下位置的纵坐标
-            float endY = e2.getY();//通过e2.getY（）获得手指松开的纵坐标
-            if ((startX - endX) > 50 && Math.abs(startY - endY) < 200) {
-                startActivity(new Intent(FaceResultActivity.this, HairAndGlassesActivity.class));
-                overridePendingTransition(R.anim.in_from_right, R.anim.out_from_left);
-            }
-            //返回值是重点：如果返回值是true则动作可以执行，如果是flase动作将无法执行
-            return true;
+        public boolean onTouchEvent (MotionEvent event){
+            gue.onTouchEvent(event);
+            return super.onTouchEvent(event);
         }
     }
-
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        gue.onTouchEvent(event);
-        return super.onTouchEvent(event);
-    }
-}
