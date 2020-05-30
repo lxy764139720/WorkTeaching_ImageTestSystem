@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:material="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -24,287 +25,293 @@
             android:textSize="20sp" />
     </android.support.v7.widget.Toolbar>
 
-
-    <LinearLayout
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_margin="5dp"
         android:layout_weight="1"
-        android:background="@android:color/transparent"
-        android:gravity="center">
+        android:foreground="?android:attr/selectableItemBackground"
+        app:cardElevation="15dp"
+        material:cardCornerRadius="5dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="10dp"
-            android:gravity="center"
-            android:text="用户信息"
-            android:textColor="@android:color/black"
-            android:textSize="30sp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:gravity="center">
 
-    </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:text="@string/USER_INFO"
+                android:textSize="20sp" />
 
-    <ImageView
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/colorAccent" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_margin="5dp"
         android:layout_weight="7"
-        android:orientation="vertical">
+        android:foreground="?android:attr/selectableItemBackground"
+        app:cardElevation="15dp"
+        material:cardCornerRadius="5dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:background="@android:color/transparent"
-            android:gravity="center">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="60dp"
-                android:layout_marginEnd="10dp"
-                android:gravity="center"
-                android:text="昵称"
-                android:textColor="@android:color/black"
-                android:textSize="25sp" />
-
-            <EditText
-                android:id="@+id/name"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginEnd="60dp"
-                android:autofillHints=""
-                android:background="@drawable/translucent"
-                android:gravity="center_horizontal"
-                android:inputType="text"
-                android:textColor="@android:color/black"
-                android:textSize="20sp" />
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:background="@android:color/transparent"
+                android:gravity="center">
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="60dp"
+                    android:layout_marginEnd="10dp"
+                    android:gravity="center"
+                    android:text="昵称"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/name"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="60dp"
+                    android:autofillHints=""
+                    android:background="@drawable/translucent"
+                    android:gravity="center_horizontal"
+                    android:inputType="text"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:background="@android:color/transparent"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="60dp"
+                    android:layout_marginEnd="10dp"
+                    android:gravity="center"
+                    android:text="性别"
+                    android:textSize="20sp" />
+
+                <Spinner
+                    android:id="@+id/gender"
+                    style="@style/sexSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="60dp"
+                    android:background="@drawable/translucent"
+                    android:gravity="center"
+                    android:textAlignment="center" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:background="@android:color/transparent"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="60dp"
+                    android:layout_marginEnd="10dp"
+                    android:gravity="center"
+                    android:text="身高"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/height"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="60dp"
+                    android:autofillHints=""
+                    android:background="@drawable/translucent"
+                    android:gravity="center_horizontal"
+                    android:hint="cm"
+                    android:inputType="number"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:background="@android:color/transparent"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="60dp"
+                    android:layout_marginEnd="10dp"
+                    android:gravity="center"
+                    android:text="肩围"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/shoulder"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="60dp"
+                    android:autofillHints=""
+                    android:background="@drawable/translucent"
+                    android:gravity="center"
+                    android:hint="cm"
+                    android:inputType="number"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:background="@android:color/transparent"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="60dp"
+                    android:layout_marginEnd="10dp"
+                    android:gravity="center"
+                    android:text="臀围"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/hip"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="60dp"
+                    android:autofillHints=""
+                    android:background="@drawable/translucent"
+                    android:gravity="center"
+                    android:hint="cm"
+                    android:inputType="number"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:background="@android:color/transparent"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="60dp"
+                    android:layout_marginEnd="10dp"
+                    android:gravity="center"
+                    android:text="腰围"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/waist"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="60dp"
+                    android:autofillHints=""
+                    android:background="@drawable/translucent"
+                    android:gravity="center_horizontal"
+                    android:hint="cm"
+                    android:inputType="number"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:background="@android:color/transparent"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="60dp"
+                    android:layout_marginEnd="10dp"
+                    android:gravity="center"
+                    android:text="体重"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/weight"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="60dp"
+                    android:autofillHints=""
+                    android:background="@drawable/translucent"
+                    android:gravity="center_horizontal"
+                    android:hint="kg"
+                    android:inputType="number"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:background="@android:color/transparent"
-            android:gravity="center">
+    </android.support.v7.widget.CardView>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="60dp"
-                android:layout_marginEnd="10dp"
-                android:gravity="center"
-                android:text="性别"
-                android:textColor="@android:color/black"
-                android:textSize="25sp" />
-
-            <Spinner
-                android:id="@+id/gender"
-                style="@style/sexSpinner"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginEnd="60dp"
-                android:background="@drawable/translucent"
-                android:gravity="center"
-                android:textAlignment="center" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:background="@android:color/transparent"
-            android:gravity="center">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="60dp"
-                android:layout_marginEnd="10dp"
-                android:gravity="center"
-                android:text="身高"
-                android:textColor="@android:color/black"
-                android:textSize="25sp" />
-
-            <EditText
-                android:id="@+id/height"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginEnd="60dp"
-                android:autofillHints=""
-                android:background="@drawable/translucent"
-                android:gravity="center_horizontal"
-                android:hint="cm"
-                android:inputType="number"
-                android:textColor="@android:color/black"
-                android:textSize="20sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:background="@android:color/transparent"
-            android:gravity="center">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="60dp"
-                android:layout_marginEnd="10dp"
-                android:gravity="center"
-                android:text="肩围"
-                android:textColor="@android:color/black"
-                android:textSize="25sp" />
-
-            <EditText
-                android:id="@+id/shoulder"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginEnd="60dp"
-                android:autofillHints=""
-                android:background="@drawable/translucent"
-                android:gravity="center"
-                android:hint="cm"
-                android:inputType="number"
-                android:textColor="@android:color/black"
-                android:textSize="20sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:background="@android:color/transparent"
-            android:gravity="center">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="60dp"
-                android:layout_marginEnd="10dp"
-                android:gravity="center"
-                android:text="臀围"
-                android:textColor="@android:color/black"
-                android:textSize="25sp" />
-
-            <EditText
-                android:id="@+id/hip"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginEnd="60dp"
-                android:autofillHints=""
-                android:background="@drawable/translucent"
-                android:gravity="center"
-                android:hint="cm"
-                android:inputType="number"
-                android:textColor="@android:color/black"
-                android:textSize="20sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:background="@android:color/transparent"
-            android:gravity="center">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="60dp"
-                android:layout_marginEnd="10dp"
-                android:gravity="center"
-                android:text="腰围"
-                android:textColor="@android:color/black"
-                android:textSize="25sp" />
-
-            <EditText
-                android:id="@+id/waist"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginEnd="60dp"
-                android:autofillHints=""
-                android:background="@drawable/translucent"
-                android:gravity="center_horizontal"
-                android:hint="cm"
-                android:inputType="number"
-                android:textColor="@android:color/black"
-                android:textSize="20sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:background="@android:color/transparent"
-            android:gravity="center">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="60dp"
-                android:layout_marginEnd="10dp"
-                android:gravity="center"
-                android:text="体重"
-                android:textColor="@android:color/black"
-                android:textSize="25sp" />
-
-            <EditText
-                android:id="@+id/weight"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginEnd="60dp"
-                android:autofillHints=""
-                android:background="@drawable/translucent"
-                android:gravity="center_horizontal"
-                android:hint="kg"
-                android:inputType="number"
-                android:textColor="@android:color/black"
-                android:textSize="20sp" />
-
-        </LinearLayout>
-    </LinearLayout>
-
-    <ImageView
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/colorAccent" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_margin="5dp"
         android:layout_weight="1"
-        android:gravity="center">
+        android:foreground="?android:attr/selectableItemBackground"
+        android:gravity="center"
+        app:cardElevation="15dp"
+        material:cardCornerRadius="5dp">
 
-        <Button
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
-            android:background="@android:color/transparent"
-            android:onClick="login"
-            android:text="下一步"
-            android:textColor="@android:color/black"
-            android:textSize="30sp" />
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
 
-    </LinearLayout>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="40dp"
+                android:layout_marginEnd="40dp"
+                android:background="@color/colorPrimary"
+                android:onClick="login"
+                android:text="下一步"
+                android:textColor="#ffffff"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
 </LinearLayout>

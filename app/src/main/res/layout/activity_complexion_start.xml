@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:material="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#1A5398"
     android:gravity="center_horizontal"
     android:orientation="vertical"
     tools:context="com.benson.face.ComplexionStartActivity">
@@ -32,70 +32,86 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
-            android:text="选择肤色"
-            android:textColor="@android:color/white"
-            android:textSize="30sp"
-            android:typeface="monospace" />
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            app:cardElevation="15dp"
+            material:cardCornerRadius="5dp">
 
-        <LinearLayout
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="选择肤色"
+                android:textSize="30sp"
+                android:typeface="monospace" />
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="80dp"
-            android:layout_weight="1"
-            android:background="#1A5398"
-            android:orientation="vertical">
+            android:layout_weight="6"
+            android:layout_margin="5dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            app:cardElevation="15dp"
+            material:cardCornerRadius="5dp">
 
-            <Button
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
-                android:layout_marginBottom="30dp"
-                android:background="#535353"
-                android:onClick="black"
-                android:text="偏黑色"
-                android:textColor="@android:color/white"
-                android:textSize="25sp" />
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
-                android:layout_marginBottom="30dp"
-                android:background="#F4D696"
-                android:onClick="wheat"
-                android:text="小麦色"
-                android:textSize="25sp" />
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginBottom="30dp"
+                    android:background="#381f17"
+                    android:onClick="black"
+                    android:text="偏黑色"
+                    android:textColor="@android:color/white"
+                    android:textSize="25sp" />
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
-                android:layout_marginBottom="30dp"
-                android:background="#E8BE92"
-                android:onClick="yellow"
-                android:text="偏黄色"
-                android:textSize="25sp" />
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginBottom="30dp"
+                    android:background="#F4D696"
+                    android:onClick="wheat"
+                    android:text="小麦色"
+                    android:textSize="25sp" />
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
-                android:background="#ffffff"
-                android:onClick="white"
-                android:text="白皙"
-                android:textSize="25sp" />
-        </LinearLayout>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginBottom="30dp"
+                    android:background="#E8BE92"
+                    android:onClick="yellow"
+                    android:text="偏黄色"
+                    android:textSize="25sp" />
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="40dp"
+                    android:background="#FFF5EE"
+                    android:onClick="white"
+                    android:text="白皙"
+                    android:textSize="25sp" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
     </LinearLayout>
 </LinearLayout>

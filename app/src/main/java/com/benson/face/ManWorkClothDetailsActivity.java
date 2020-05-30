@@ -9,18 +9,18 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.InputStream;
 
-public class ManClothDetailsActivity extends AppCompatActivity {
+public class ManWorkClothDetailsActivity extends AppCompatActivity {
     private int index;
     private int[] arr;
     private String style;
     private GestureDetector gue;
 
     private TextView descriptionText;
-
     private ImageView clothsImg;
     private ImageView shoesImg;
     private ImageView necktieImg;
@@ -31,6 +31,7 @@ public class ManClothDetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.man_clothing);
+        Toast.makeText(ManWorkClothDetailsActivity.this, "左滑可返回主界面", Toast.LENGTH_SHORT).show();
         initView();
         MyApplication myApplication = (MyApplication) getApplication();
         index = getIntent().getIntExtra("index", 0);
@@ -46,11 +47,11 @@ public class ManClothDetailsActivity extends AppCompatActivity {
         String briefcase = "brief_case";
         briefCaseImg.setImageBitmap(getOtherImg(briefcase));
         descriptionText.setText(getDescription());//获取strings.xml里的服装描述文本信息
-        gue = new GestureDetector(ManClothDetailsActivity.this, new ManClothDetailsActivity.MyGestureListener());
+        gue = new GestureDetector(ManWorkClothDetailsActivity.this, new ManWorkClothDetailsActivity.MyGestureListener());
     }
 
     private void initView() {
-        clothsImg = findViewById(R.id.cloths);
+        clothsImg = findViewById(R.id.m_work_cloths);
         shoesImg = findViewById(R.id.shoes);
         necktieImg = findViewById(R.id.necktie);
         wristWatchImg = findViewById(R.id.wristwatch);
@@ -155,7 +156,7 @@ public class ManClothDetailsActivity extends AppCompatActivity {
             float startY = e1.getY();//通过e1.getY（）获得手指按下位置的纵坐标
             float endY = e2.getY();//通过e2.getY（）获得手指松开的纵坐标
             if ((startX - endX) > 50 && Math.abs(startY - endY) < 200) {
-                Intent intent = new Intent(ManClothDetailsActivity.this, ClothEndActivity.class);
+                Intent intent = new Intent(ManWorkClothDetailsActivity.this, SelectModelActivity.class);
                 intent.putExtra("index", index);
                 intent.putExtra("arr", arr);
                 intent.putExtra("style", style);

@@ -39,7 +39,7 @@ public class HairAndGlassesActivity extends AppCompatActivity {
         glassesImg.setImageBitmap(getImg(glasses, gender, faceType));
         hairDesText.setText(getDescription(hair, gender, faceType));
         glassesDesText.setText(getDescription(glasses, gender, faceType));
-        Toast.makeText(HairAndGlassesActivity.this, "左滑可返回主界面", Toast.LENGTH_LONG).show();
+        Toast.makeText(HairAndGlassesActivity.this, "左滑可返回主界面", Toast.LENGTH_SHORT).show();
         gue = new GestureDetector(HairAndGlassesActivity.this, new MyGestureListener());
     }
 

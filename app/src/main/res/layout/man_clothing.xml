@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:material="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#1A5398"
     android:orientation="vertical">
 
     <android.support.v7.widget.Toolbar
@@ -24,97 +24,134 @@
             android:textSize="20sp" />
     </android.support.v7.widget.Toolbar>
 
-    <ImageView
-        android:id="@+id/cloths"
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginRight="80dp"
-        android:layout_weight="4" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_margin="20dp"
-        android:text="推荐描述"
-        android:textColor="#fff"
-        android:textSize="30sp" />
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_weight="3">
-
-        <TextView
-            android:id="@+id/description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:lineSpacingExtra="5dp"
-            android:textColor="#fff"
-            android:textSize="15sp"
-            tools:text="@string/des_man_blue" />
-    </ScrollView>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_margin="20dp"
-        android:text="配件推荐"
-        android:textColor="#fff"
-        android:textSize="30sp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginBottom="50dp"
+        android:layout_margin="5dp"
         android:layout_weight="2"
-        android:orientation="horizontal"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp">
+        android:foreground="?android:attr/selectableItemBackground"
+        app:cardElevation="15dp"
+        material:cardCornerRadius="5dp">
 
-        <ImageView
-            android:id="@+id/briefcase"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:scaleType="fitCenter"
-            android:src="@drawable/briefcase"
-            android:textSize="25sp" />
+            android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/necktie"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:scaleType="fitCenter"
-            android:src="@drawable/necktie"
-            android:textSize="25sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:text="@string/CLOTH_REC"
+                android:textSize="20sp"/>
 
-        <ImageView
-            android:id="@+id/wristwatch"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:scaleType="fitCenter"
-            android:src="@drawable/wristwatch"
-            android:textSize="25sp" />
+            <ImageView
+                android:id="@+id/m_work_cloths"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:scaleType="centerInside" />
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
 
-        <ImageView
-            android:id="@+id/shoes"
-            android:layout_width="0dp"
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="5dp"
+        android:layout_weight="3"
+        android:foreground="?android:attr/selectableItemBackground"
+        app:cardElevation="15dp"
+        material:cardCornerRadius="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:scaleType="fitCenter"
-            android:src="@drawable/shoes"
-            android:textSize="25sp" />
-    </LinearLayout>
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="20dp"
+                android:text="@string/REC_DES"
+                android:textSize="20sp" />
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="3">
+
+                <TextView
+                    android:id="@+id/description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingExtra="5dp"
+                    android:textSize="15sp"
+                    tools:text="@string/des_man_blue" />
+            </ScrollView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="20dp"
+                android:text="@string/ACCESSORY_REC"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginBottom="50dp"
+                android:layout_weight="2"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <ImageView
+                    android:id="@+id/briefcase"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/briefcase"
+                    android:textSize="25sp" />
+
+                <ImageView
+                    android:id="@+id/necktie"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/necktie"
+                    android:textSize="25sp" />
+
+                <ImageView
+                    android:id="@+id/wristwatch"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/wristwatch"
+                    android:textSize="25sp" />
+
+                <ImageView
+                    android:id="@+id/shoes"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/shoes"
+                    android:textSize="25sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+
 </LinearLayout>

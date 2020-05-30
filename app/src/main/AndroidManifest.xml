@@ -20,8 +20,8 @@
         android:roundIcon="@mipmap/app_icon"
         android:supportsRtl="true"
         android:theme="@style/ActivityChangeAnimTheme">
-        <activity android:name=".WomanClothDetailsActivity" />
-        <activity android:name=".ManClothDetailsActivity" />
+        <activity android:name=".WomanWorkClothDetailsActivity" />
+        <activity android:name=".ManWorkClothDetailsActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,9 +37,12 @@
         <activity android:name=".FaceResultActivity" />
         <activity android:name=".ComplexionStartActivity" />
         <activity android:name=".ComplexionActivity" />
-        <activity android:name=".ClothEndActivity" />
         <activity android:name=".BodyCameraActivity" />
         <activity android:name=".HairAndGlassesActivity" />
+        <activity android:name=".WomanDailyClothDetailsActivity" />
+        <activity android:name=".WomanDateClothDetailsActivity" />
+        <activity android:name=".ManDailyClothDetailsActivity" />
+        <activity android:name=".ManDateClothDetailsActivity" />
     </application>
 
 </manifest>

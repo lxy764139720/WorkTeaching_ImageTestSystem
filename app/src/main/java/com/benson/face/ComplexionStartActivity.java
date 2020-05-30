@@ -9,10 +9,13 @@ import android.view.View;
 
 public class ComplexionStartActivity extends AppCompatActivity {
 
+    private String scene;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_complexion_start);
+        scene = getIntent().getStringExtra("scene");
         gue = new GestureDetector(this, new MyGestureListener());
     }
 
@@ -27,8 +30,8 @@ public class ComplexionStartActivity extends AppCompatActivity {
             float startY = e1.getY();//通过e1.getY（）获得手指按下位置的纵坐标
             float endY = e2.getY();//通过e2.getY（）获得手指松开的纵坐标
             if ((startX - endX) > 50 && Math.abs(startY - endY) < 200) {
-                startActivity(new Intent(ComplexionStartActivity.this,ComplexionActivity.class));
-                overridePendingTransition(R.anim.in_from_right,R.anim.out_from_left);
+                startActivity(new Intent(ComplexionStartActivity.this, ComplexionActivity.class));
+                overridePendingTransition(R.anim.in_from_right, R.anim.out_from_left);
             }
             //返回值是重点：如果返回值是true则动作可以执行，如果是flase动作将无法执行
             return true;
@@ -36,7 +39,9 @@ public class ComplexionStartActivity extends AppCompatActivity {
     }
 
     public void lookResult() {
-        startActivity(new Intent(this, ComplexionActivity.class));
+        Intent intent = new Intent(ComplexionStartActivity.this, ComplexionActivity.class);
+        intent.putExtra("scene", scene);
+        startActivity(intent);
         overridePendingTransition(R.anim.in_from_right, R.anim.out_from_left);
         finish();
     }

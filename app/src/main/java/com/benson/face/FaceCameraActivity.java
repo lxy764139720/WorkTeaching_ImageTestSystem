@@ -29,7 +29,7 @@ public class FaceCameraActivity extends AppCompatActivity implements View.OnClic
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_camera);
+        setContentView(R.layout.activity_face_camera);
         SurfaceView mSurfaceView = findViewById(R.id.photo);
         mSurfaceView.setKeepScreenOn(true);
         View takePhotoBtn = findViewById(R.id.mCatture);
@@ -102,7 +102,7 @@ public class FaceCameraActivity extends AppCompatActivity implements View.OnClic
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    Toast.makeText(FaceCameraActivity.this, "网络错误", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(FaceCameraActivity.this, "网络错误", Toast.LENGTH_SHORT).show();
                                 }
                             });
                         }

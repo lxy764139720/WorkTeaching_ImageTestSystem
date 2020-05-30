@@ -20,8 +20,6 @@ import org.json.JSONObject;
 
 public class FaceResultActivity extends AppCompatActivity {
 
-    private LinearLayout hairLayout;
-
     private GestureDetector gue;
 
     private double pointToLine(int x1, int y1, int x2, int y2, int x0,
@@ -181,7 +179,7 @@ public class FaceResultActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_face_result);
-        hairLayout = findViewById(R.id.hairLayout);
+        LinearLayout hairLayout = findViewById(R.id.hairLayout);
         TextView faceName = findViewById(R.id.faceName);
         ImageView faceImg_1 = findViewById(R.id.faceImg_1);
         ImageView faceImg_2 = findViewById(R.id.faceImg_2);
@@ -273,7 +271,7 @@ public class FaceResultActivity extends AppCompatActivity {
                     }
                 }
             }
-            Toast.makeText(FaceResultActivity.this, "左滑可查看详情以及其他配件的推荐", Toast.LENGTH_LONG).show();
+            Toast.makeText(FaceResultActivity.this, "左滑可查看详情以及其他配件的推荐", Toast.LENGTH_SHORT).show();
             gue = new GestureDetector(FaceResultActivity.this, new MyGestureListener());
         }
     }

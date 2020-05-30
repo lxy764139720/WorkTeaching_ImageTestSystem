@@ -95,7 +95,8 @@ public class LoginActivity extends AppCompatActivity {
         user.hip = Integer.parseInt(hipText.getText().toString());
         user.waist = Integer.parseInt(waistText.getText().toString());
         user.weight = Integer.parseInt(weightText.getText().toString());
-        ((MyApplication) getApplication()).user = user;
+        user.bodyType(); //计算体型
+        ((MyApplication) getApplication()).user = user;  //交给活动保存
         startActivity(new Intent(this, SelectModelActivity.class)); //页面跳转
         overridePendingTransition(R.anim.in_from_right, R.anim.out_from_left); //切换动画
     }

@@ -23,6 +23,7 @@ import java.io.EOFException;
 
 public class BodyCameraActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private String scene;
     private volatile boolean isTake = false;
     private AlertDialog.Builder mDialogBuilder;
     private AlertDialog mDialog;
@@ -32,6 +33,7 @@ public class BodyCameraActivity extends AppCompatActivity implements View.OnClic
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_body_camera);
+        scene = getIntent().getStringExtra("scene");
         SurfaceView mSurfaceView = findViewById(R.id.photo);
         mSurfaceView.setKeepScreenOn(true);
         ImageView takePhotoBtn = findViewById(R.id.btn);
@@ -87,14 +89,22 @@ public class BodyCameraActivity extends AppCompatActivity implements View.OnClic
                                         }
                                     });
                                 } else {
-                                    Intent intent = new Intent(BodyCameraActivity.this, ComplexionStartActivity.class);
                                     JSONObject body = json.getJSONArray("humanbodies").getJSONObject(0);
                                     JSONObject rec = body.getJSONObject("humanbody_rectangle");
                                     ((MyApplication) getApplication()).user.height = Integer.parseInt(rec.getString("height"));
+
+                                    Intent intent = new Intent(BodyCameraActivity.this, ComplexionStartActivity.class);
+                                    if (((MyApplication) getApplication()).user.complexion == null) {
+                                        intent.setClass(BodyCameraActivity.this, ComplexionStartActivity.class);
+                                    } else {
+                                        intent.setClass(BodyCameraActivity.this, ComplexionActivity.class);
+                                    }
+
                                     intent.putExtra("top", rec.getInt("top"));
                                     intent.putExtra("left", rec.getInt("left"));
                                     intent.putExtra("width", rec.getInt("width"));
                                     intent.putExtra("height", rec.getInt("height"));
+                                    intent.putExtra("scene", scene);
                                     startActivity(intent);
                                     overridePendingTransition(R.anim.in_from_right, R.anim.out_from_left);
                                     finish();
@@ -116,7 +126,7 @@ public class BodyCameraActivity extends AppCompatActivity implements View.OnClic
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    Toast.makeText(BodyCameraActivity.this, "网络错误", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(BodyCameraActivity.this, "网络错误", Toast.LENGTH_SHORT).show();
                                 }
                             });
                         }

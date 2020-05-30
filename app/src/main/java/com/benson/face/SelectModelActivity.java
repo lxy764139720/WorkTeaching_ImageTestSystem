@@ -44,13 +44,15 @@ public class SelectModelActivity extends AppCompatActivity {
                         break;
                     case 1:
                         Toast.makeText(SelectModelActivity.this, "请对准全身拍照", Toast.LENGTH_SHORT).show();
-                        selectBody(view);
+                        selectBody(view, "求职正装");
                         break;
                     case 2:
                         Toast.makeText(SelectModelActivity.this, "请对准全身拍照", Toast.LENGTH_SHORT).show();
+                        selectBody(view, "约会穿搭");
                         break;
                     case 3:
                         Toast.makeText(SelectModelActivity.this, "请对准全身拍照", Toast.LENGTH_SHORT).show();
+                        selectBody(view, "日常穿搭");
                         break;
                     default:
                         break;
@@ -65,13 +67,15 @@ public class SelectModelActivity extends AppCompatActivity {
             startActivity(new Intent(this, FaceCameraActivity.class)); //页面跳转到面部拍照
             overridePendingTransition(R.anim.in_from_right, R.anim.out_from_right);
         } catch (Exception e) {
-            Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 
     //选择全身识别模块
-    public void selectBody(View view) {
-        startActivity(new Intent(this, BodyCameraActivity.class)); //页面跳转到全身识别
+    public void selectBody(View view, String scene) {
+        Intent intent = new Intent(SelectModelActivity.this, BodyCameraActivity.class);
+        intent.putExtra("scene", scene);
+        startActivity(intent); //页面跳转到全身识别
         overridePendingTransition(R.anim.in_from_right, R.anim.out_from_right);
     }
 
