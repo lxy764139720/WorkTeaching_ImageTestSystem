@@ -30,11 +30,11 @@ public class ManWorkClothDetailsActivity extends AppCompatActivity {
     private GestureDetector gue;
 
     private TextView descriptionText;
-    private ViewPager mViewPager;
     private ImageView shoesImg;
     private ImageView necktieImg;
     private ImageView wristWatchImg;
     private ImageView briefCaseImg;
+    private ViewPager mViewPager;
     private List<View> mViews;
     private ViewGroup mDotViewGroup;
     private List<ImageView> mDotViews = new ArrayList<>();

@@ -4,15 +4,23 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ManDailyClothDetailsActivity extends AppCompatActivity {
     private String scene;
@@ -23,7 +31,10 @@ public class ManDailyClothDetailsActivity extends AppCompatActivity {
     private User user;
 
     private TextView descriptionText;
-    private ImageView clothsImg;
+    private ViewPager mViewPager;
+    private List<View> mViews;
+    private ViewGroup mDotViewGroup;
+    private List<ImageView> mDotViews = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,20 +42,93 @@ public class ManDailyClothDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.clothing);
         Toast.makeText(ManDailyClothDetailsActivity.this, "左滑可返回主界面", Toast.LENGTH_SHORT).show();
         initView();
-        user = ((MyApplication)getApplication()).user;
+        user = ((MyApplication) getApplication()).user;
         bodyType = user.bodyType;
         index = getIntent().getIntExtra("index", 0);
         arr = getIntent().getIntArrayExtra("arr");
         scene = getIntent().getStringExtra("scene");
-        clothsImg.setImageBitmap(getClothImg(index));
+
+        //滑动图片
+        mViews = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            ImageView imageView = new ImageView(this);
+            imageView.setImageBitmap(getClothImg(i));
+            imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+            mViews.add(imageView);
+            //设置位置点
+            ImageView dot = new ImageView(this);
+            dot.setImageResource(R.mipmap.unselected);
+            dot.setMaxHeight(100);
+            dot.setMaxWidth(100);
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(30, 30);
+            layoutParams.leftMargin = 20;
+            dot.setLayoutParams(layoutParams);
+            dot.setEnabled(false);
+
+            mDotViewGroup.addView(dot);
+            mDotViews.add(dot);
+        }
+        mViewPager.setAdapter(mPagerAdapter);
+        mViewPager.setCurrentItem(0);
+        setDotViews(0);
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int i, float v, int i1) {
+
+            }
+
+            @Override
+            public void onPageSelected(int i) {
+                setDotViews(i);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int i) {
+
+            }
+        });
+
+        //动态设置其他图片
         descriptionText.setText(this.getResources().getText(R.string.m_sport));//获取strings.xml里的服装描述文本信息
         gue = new GestureDetector(ManDailyClothDetailsActivity.this, new ManDailyClothDetailsActivity.MyGestureListener());
     }
 
+    private void setDotViews(int i) {
+        for (int j = 0; j < mDotViews.size(); j++) {
+            mDotViews.get(j).setImageResource(i == j ? R.mipmap.selected : R.mipmap.unselected);
+        }
+    }
+
     private void initView() {
-        clothsImg = findViewById(R.id.cloth_img);
+        mViewPager = findViewById(R.id.viewPager);
+        mDotViewGroup = findViewById(R.id.dotGrop);
         descriptionText = findViewById(R.id.description);
     }
+
+    PagerAdapter mPagerAdapter = new PagerAdapter() {
+        @Override
+        public int getCount() {
+            return 3;
+        }
+
+        @Override
+        public boolean isViewFromObject(@NonNull View view, @NonNull Object o) {
+            return view == o;
+        }
+
+        @NonNull
+        @Override
+        public Object instantiateItem(@NonNull ViewGroup container, int position) {
+            View child = mViews.get(position);
+            container.addView(child);
+            return child;
+        }
+
+        @Override
+        public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
+            container.removeView(mViews.get(position));
+        }
+    };
 
     private Bitmap getClothImg(int index) {
         StringBuilder sb = new StringBuilder(user.gender);
@@ -75,7 +159,7 @@ public class ManDailyClothDetailsActivity extends AppCompatActivity {
                 Intent intent = new Intent(ManDailyClothDetailsActivity.this, ComplexionActivity.class);
                 intent.putExtra("index", index);
                 intent.putExtra("arr", arr);
-                intent.putExtra("style", bodyType);
+                intent.putExtra("scene", scene);
                 intent.putExtra("style", bodyType);//返回上一界面保存数据
                 startActivity(intent);
                 overridePendingTransition(R.anim.in_from_left, R.anim.out_from_right);
