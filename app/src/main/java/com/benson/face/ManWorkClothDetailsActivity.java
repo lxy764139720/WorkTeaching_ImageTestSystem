@@ -3,16 +3,24 @@ package com.benson.face;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.support.annotation.NonNull;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ManWorkClothDetailsActivity extends AppCompatActivity {
     private String scene;
@@ -22,11 +30,14 @@ public class ManWorkClothDetailsActivity extends AppCompatActivity {
     private GestureDetector gue;
 
     private TextView descriptionText;
-    private ImageView clothsImg;
+    private ViewPager mViewPager;
     private ImageView shoesImg;
     private ImageView necktieImg;
     private ImageView wristWatchImg;
     private ImageView briefCaseImg;
+    private List<View> mViews;
+    private ViewGroup mDotViewGroup;
+    private List<ImageView> mDotViews = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +50,48 @@ public class ManWorkClothDetailsActivity extends AppCompatActivity {
         arr = getIntent().getIntArrayExtra("arr");
         style = getIntent().getStringExtra("style");
         scene = getIntent().getStringExtra("scene");
+
+        //滑动图片
+        mViews = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            ImageView imageView = new ImageView(this);
+            imageView.setImageBitmap(getClothImg(Integer.toString((int) myApplication.user.height), i));
+            imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+            mViews.add(imageView);
+            //设置位置点
+            ImageView dot = new ImageView(this);
+            dot.setImageResource(R.mipmap.unselected);
+            dot.setMaxHeight(100);
+            dot.setMaxWidth(100);
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(30, 30);
+            layoutParams.leftMargin = 20;
+            dot.setLayoutParams(layoutParams);
+            dot.setEnabled(false);
+
+            mDotViewGroup.addView(dot);
+            mDotViews.add(dot);
+        }
+        mViewPager.setAdapter(mPagerAdapter);
+        mViewPager.setCurrentItem(0);
+        setDotViews(0);
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int i, float v, int i1) {
+
+            }
+
+            @Override
+            public void onPageSelected(int i) {
+                setDotViews(i);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int i) {
+
+            }
+        });
+
+        //动态设置其他图片
         String shoes = "shoes";
         shoesImg.setImageBitmap(getOtherImg(shoes));
         String necktie = "necktie";
@@ -51,14 +104,46 @@ public class ManWorkClothDetailsActivity extends AppCompatActivity {
         gue = new GestureDetector(ManWorkClothDetailsActivity.this, new ManWorkClothDetailsActivity.MyGestureListener());
     }
 
+    private void setDotViews(int i) {
+        for (int j = 0; j < mDotViews.size(); j++) {
+            mDotViews.get(j).setImageResource(i == j ? R.mipmap.selected : R.mipmap.unselected);
+        }
+    }
+
     private void initView() {
-        clothsImg = findViewById(R.id.m_work_cloths);
+        mViewPager = findViewById(R.id.viewPager);
+        mDotViewGroup = findViewById(R.id.dotGrop);
         shoesImg = findViewById(R.id.shoes);
         necktieImg = findViewById(R.id.necktie);
         wristWatchImg = findViewById(R.id.wristwatch);
         briefCaseImg = findViewById(R.id.briefcase);
         descriptionText = findViewById(R.id.description);
     }
+
+    PagerAdapter mPagerAdapter = new PagerAdapter() {
+        @Override
+        public int getCount() {
+            return 3;
+        }
+
+        @Override
+        public boolean isViewFromObject(@NonNull View view, @NonNull Object o) {
+            return view == o;
+        }
+
+        @NonNull
+        @Override
+        public Object instantiateItem(@NonNull ViewGroup container, int position) {
+            View child = mViews.get(position);
+            container.addView(child);
+            return child;
+        }
+
+        @Override
+        public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
+            container.removeView(mViews.get(position));
+        }
+    };
 
     private Bitmap getClothImg(String height, int index) {
         StringBuilder sb = new StringBuilder("cloth/");
