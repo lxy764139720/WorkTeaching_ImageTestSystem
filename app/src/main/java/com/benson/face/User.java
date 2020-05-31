@@ -7,7 +7,16 @@ package com.benson.face;
 public class User {
 
     public enum Complexion {
-        BLACK, WHITE, WHEAT, YELLOW
+        BLACK("black"), WHITE("white"), WHEAT("wheat"), YELLOW("yellow");
+        private String complexion;
+
+        Complexion(String complextion) {
+            this.complexion = complextion;
+        }
+
+        public String getComplexion() {
+            return complexion;
+        }
     }
 
     public enum FaceType {
@@ -15,7 +24,16 @@ public class User {
     }
 
     public enum BodyType {
-        A, H, O, X, Y
+        A("A"), H("H"), O("O"), X("X"), Y("Y");
+        String bodyType;
+
+        BodyType(String bodyType) {
+            this.bodyType = bodyType;
+        }
+
+        public String getBodyType() {
+            return bodyType;
+        }
     }
 
     public Complexion complexion = null;
@@ -23,11 +41,11 @@ public class User {
     public BodyType bodyType;
     public String name;
     public String gender;
-    public int height;//身高
-    public int shoulder;//肩围
-    public int hip;//臀围
-    public int waist;//腰围
-    public int weight;//体重
+    public float height;//身高
+    public float shoulder;//肩围
+    public float hip;//臀围
+    public float waist;//腰围
+    public float weight;//体重
 
     public void bodyType() {
         float a = shoulder;

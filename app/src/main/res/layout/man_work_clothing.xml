@@ -44,7 +44,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
                 android:text="@string/CLOTH_REC"
-                android:textSize="20sp"/>
+                android:textSize="20sp" />
 
             <ImageView
                 android:id="@+id/m_work_cloths"

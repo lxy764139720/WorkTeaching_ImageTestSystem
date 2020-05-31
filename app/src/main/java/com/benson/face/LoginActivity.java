@@ -56,7 +56,7 @@ public class LoginActivity extends AppCompatActivity {
         String bgName = "start" + bgNumber + "a";
         int bgID = getResources().getIdentifier(bgName, "drawable", "com.benson.face");
         getWindow().getDecorView().setBackgroundResource(bgID);
-        setContentView(R.layout.activity_student_login);
+        setContentView(R.layout.activity_login);
 
         //init 实例化各个变量
         nameText = findViewById(R.id.name);
@@ -79,22 +79,22 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(this, "用户信息不能为空", Toast.LENGTH_SHORT).show();
             return;
         }
-        if (Integer.parseInt(heightText.getText().toString()) < 130 || Integer.parseInt(heightText.getText().toString()) > 220
-                || Integer.parseInt(shoulderText.getText().toString()) < 30 || Integer.parseInt(shoulderText.getText().toString()) > 120
-                || Integer.parseInt(hipText.getText().toString()) < 30 || Integer.parseInt(hipText.getText().toString()) > 140
-                || Integer.parseInt(waistText.getText().toString()) < 30 || Integer.parseInt(waistText.getText().toString()) > 140
-                || Integer.parseInt(weightText.getText().toString()) < 30 || Integer.parseInt(weightText.getText().toString()) > 120) {
+        if (Float.parseFloat(heightText.getText().toString()) < 130 || Float.parseFloat(heightText.getText().toString()) > 220
+                || Float.parseFloat(shoulderText.getText().toString()) < 30 || Integer.parseInt(shoulderText.getText().toString()) > 120
+                || Float.parseFloat(hipText.getText().toString()) < 30 || Float.parseFloat(hipText.getText().toString()) > 140
+                || Float.parseFloat(waistText.getText().toString()) < 30 || Float.parseFloat(waistText.getText().toString()) > 140
+                || Float.parseFloat(weightText.getText().toString()) < 30 || Float.parseFloat(weightText.getText().toString()) > 120) {
             Toast.makeText(this, "请填写正确的数值", Toast.LENGTH_SHORT).show();
             return;
         }
         User user = new User();
         user.gender = genderSpinner.getSelectedItemPosition() == 0 ? "m" : "w"; //获取性别
         user.name = nameText.getText().toString();
-        user.height = Integer.parseInt(heightText.getText().toString());
-        user.shoulder = Integer.parseInt(shoulderText.getText().toString());
-        user.hip = Integer.parseInt(hipText.getText().toString());
-        user.waist = Integer.parseInt(waistText.getText().toString());
-        user.weight = Integer.parseInt(weightText.getText().toString());
+        user.height = Float.parseFloat(heightText.getText().toString());
+        user.shoulder = Float.parseFloat(shoulderText.getText().toString());
+        user.hip = Float.parseFloat(hipText.getText().toString());
+        user.waist = Float.parseFloat(waistText.getText().toString());
+        user.weight = Float.parseFloat(weightText.getText().toString());
         user.bodyType(); //计算体型
         ((MyApplication) getApplication()).user = user;  //交给活动保存
         startActivity(new Intent(this, SelectModelActivity.class)); //页面跳转

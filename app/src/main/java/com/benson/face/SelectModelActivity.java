@@ -44,15 +44,15 @@ public class SelectModelActivity extends AppCompatActivity {
                         break;
                     case 1:
                         Toast.makeText(SelectModelActivity.this, "请对准全身拍照", Toast.LENGTH_SHORT).show();
-                        selectBody(view, "求职正装");
+                        selectBody("求职正装");
                         break;
                     case 2:
                         Toast.makeText(SelectModelActivity.this, "请对准全身拍照", Toast.LENGTH_SHORT).show();
-                        selectBody(view, "约会穿搭");
+                        selectBody("约会穿搭");
                         break;
                     case 3:
                         Toast.makeText(SelectModelActivity.this, "请对准全身拍照", Toast.LENGTH_SHORT).show();
-                        selectBody(view, "日常穿搭");
+                        selectBody("日常穿搭");
                         break;
                     default:
                         break;
@@ -72,7 +72,7 @@ public class SelectModelActivity extends AppCompatActivity {
     }
 
     //选择全身识别模块
-    public void selectBody(View view, String scene) {
+    public void selectBody(String scene) {
         Intent intent = new Intent(SelectModelActivity.this, BodyCameraActivity.class);
         intent.putExtra("scene", scene);
         startActivity(intent); //页面跳转到全身识别

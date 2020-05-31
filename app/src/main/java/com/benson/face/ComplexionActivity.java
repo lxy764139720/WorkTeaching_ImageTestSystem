@@ -48,7 +48,7 @@ public class ComplexionActivity extends AppCompatActivity {
             for (int i = 0; i < arr.length; i++) {
                 int num;
                 do {
-                    num = random.nextInt(8) + 1;
+                    num = random.nextInt(7) + 1;
                 } while (num == arr[0] || num == arr[1] || num == arr[2]);
                 arr[i] = num;
             }
@@ -195,6 +195,7 @@ public class ComplexionActivity extends AppCompatActivity {
         intent.putExtra("index", index);
         intent.putExtra("arr", arr);
         intent.putExtra("style", style);
+        intent.putExtra("scene", scene);
         startActivity(intent);
         overridePendingTransition(R.anim.in_from_right, R.anim.out_from_left);
         finish();

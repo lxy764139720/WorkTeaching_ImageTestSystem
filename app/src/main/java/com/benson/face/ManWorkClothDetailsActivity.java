@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class ManWorkClothDetailsActivity extends AppCompatActivity {
+    private String scene;
     private int index;
     private int[] arr;
     private String style;
@@ -30,14 +31,14 @@ public class ManWorkClothDetailsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.man_clothing);
+        setContentView(R.layout.man_work_clothing);
         Toast.makeText(ManWorkClothDetailsActivity.this, "左滑可返回主界面", Toast.LENGTH_SHORT).show();
         initView();
         MyApplication myApplication = (MyApplication) getApplication();
         index = getIntent().getIntExtra("index", 0);
         arr = getIntent().getIntArrayExtra("arr");
         style = getIntent().getStringExtra("style");
-        clothsImg.setImageBitmap(getClothImg(Integer.toString(myApplication.user.height), index));
+        scene = getIntent().getStringExtra("scene");
         String shoes = "shoes";
         shoesImg.setImageBitmap(getOtherImg(shoes));
         String necktie = "necktie";
@@ -157,12 +158,18 @@ public class ManWorkClothDetailsActivity extends AppCompatActivity {
             float endY = e2.getY();//通过e2.getY（）获得手指松开的纵坐标
             if ((startX - endX) > 50 && Math.abs(startY - endY) < 200) {
                 Intent intent = new Intent(ManWorkClothDetailsActivity.this, SelectModelActivity.class);
-                intent.putExtra("index", index);
-                intent.putExtra("arr", arr);
-                intent.putExtra("style", style);
                 startActivity(intent);
                 overridePendingTransition(R.anim.in_from_right, R.anim.out_from_left);
             }//左滑
+            if ((endX - startX) > 50 && Math.abs(startY - endY) < 200) {
+                Intent intent = new Intent(ManWorkClothDetailsActivity.this, ComplexionActivity.class);
+                intent.putExtra("index", index);
+                intent.putExtra("arr", arr);
+                intent.putExtra("scene", scene);
+                intent.putExtra("style", ((MyApplication) getApplication()).user.bodyType);//返回上一界面保存数据
+                startActivity(intent);
+                overridePendingTransition(R.anim.in_from_left, R.anim.out_from_right);
+            }
             //返回值是重点：如果返回值是true则动作可以执行，如果是flase动作将无法执行
             return true;
         }
