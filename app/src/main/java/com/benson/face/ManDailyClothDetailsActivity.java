@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class ManDailyClothDetailsActivity extends AppCompatActivity {
     private String scene;
@@ -29,12 +30,14 @@ public class ManDailyClothDetailsActivity extends AppCompatActivity {
     private User.BodyType bodyType;
     private GestureDetector gue;
     private User user;
+    private MyApplication myApplication;
 
     private TextView descriptionText;
     private ViewPager mViewPager;
     private List<View> mViews;
     private ViewGroup mDotViewGroup;
     private List<ImageView> mDotViews = new ArrayList<>();
+    private ImageView refreshImg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,15 +45,42 @@ public class ManDailyClothDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.clothing);
         Toast.makeText(ManDailyClothDetailsActivity.this, "左滑可返回主界面", Toast.LENGTH_SHORT).show();
         initView();
-        user = ((MyApplication) getApplication()).user;
+        user = myApplication.user;
         bodyType = user.bodyType;
         index = getIntent().getIntExtra("index", 0);
         arr = getIntent().getIntArrayExtra("arr");
         scene = getIntent().getStringExtra("scene");
 
+        setViewPager();
+        //动态设置其他图片
+        descriptionText.setText(this.getResources().getText(R.string.m_sport));//获取strings.xml里的服装描述文本信息
+        gue = new GestureDetector(ManDailyClothDetailsActivity.this, new ManDailyClothDetailsActivity.MyGestureListener());
+
+        //刷新图片
+        refreshImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                arr = new int[3];
+                Random random = new Random(System.currentTimeMillis());
+                for (int i = 0; i < arr.length; i++) {
+                    int num;
+                    do {
+                        num = random.nextInt(7) + 1;
+                    } while (num == arr[0] || num == arr[1] || num == arr[2]);
+                    arr[i] = num;
+                }
+                setViewPager();
+            }
+        });
+    }
+
+    private void setViewPager(){
         //滑动图片
         mViews = new ArrayList<>();
+        mDotViewGroup.removeAllViews();
+        mDotViews.clear();
         for (int i = 0; i < 3; i++) {
+            //设置图片
             ImageView imageView = new ImageView(this);
             imageView.setImageBitmap(getClothImg(i));
             imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
@@ -68,6 +98,32 @@ public class ManDailyClothDetailsActivity extends AppCompatActivity {
             mDotViewGroup.addView(dot);
             mDotViews.add(dot);
         }
+
+        PagerAdapter mPagerAdapter = new PagerAdapter() {
+            @Override
+            public int getCount() {
+                return 3;
+            }
+
+            @Override
+            public boolean isViewFromObject(@NonNull View view, @NonNull Object o) {
+                return view == o;
+            }
+
+            @NonNull
+            @Override
+            public Object instantiateItem(@NonNull ViewGroup container, int position) {
+                View child = mViews.get(position);
+                container.addView(child);
+                return child;
+            }
+
+            @Override
+            public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
+                container.removeView(mViews.get(position));
+            }
+        };
+
         mViewPager.setAdapter(mPagerAdapter);
         mViewPager.setCurrentItem(0);
         setDotViews(0);
@@ -87,10 +143,6 @@ public class ManDailyClothDetailsActivity extends AppCompatActivity {
 
             }
         });
-
-        //动态设置其他图片
-        descriptionText.setText(this.getResources().getText(R.string.m_sport));//获取strings.xml里的服装描述文本信息
-        gue = new GestureDetector(ManDailyClothDetailsActivity.this, new ManDailyClothDetailsActivity.MyGestureListener());
     }
 
     private void setDotViews(int i) {
@@ -100,35 +152,12 @@ public class ManDailyClothDetailsActivity extends AppCompatActivity {
     }
 
     private void initView() {
+        myApplication = (MyApplication) getApplication();
         mViewPager = findViewById(R.id.viewPager);
         mDotViewGroup = findViewById(R.id.dotGrop);
         descriptionText = findViewById(R.id.description);
+        refreshImg = findViewById(R.id.refresh);
     }
-
-    PagerAdapter mPagerAdapter = new PagerAdapter() {
-        @Override
-        public int getCount() {
-            return 3;
-        }
-
-        @Override
-        public boolean isViewFromObject(@NonNull View view, @NonNull Object o) {
-            return view == o;
-        }
-
-        @NonNull
-        @Override
-        public Object instantiateItem(@NonNull ViewGroup container, int position) {
-            View child = mViews.get(position);
-            container.addView(child);
-            return child;
-        }
-
-        @Override
-        public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
-            container.removeView(mViews.get(position));
-        }
-    };
 
     private Bitmap getClothImg(int index) {
         StringBuilder sb = new StringBuilder(user.gender);

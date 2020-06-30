@@ -36,6 +36,7 @@ public class ComplexionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_complexion);
         scene = getIntent().getStringExtra("scene");
+        style = getIntent().getStringExtra("style");
         Toast.makeText(ComplexionActivity.this, "左滑可查看详情以及其他配件的推荐", Toast.LENGTH_SHORT).show();
         gue = new GestureDetector(this, new MyGestureListener());
         init();
@@ -54,7 +55,9 @@ public class ComplexionActivity extends AppCompatActivity {
             }
         }
         Random random = new Random(System.currentTimeMillis());
-        style = random.nextInt(6) + "";
+        if (style == null) {
+            style = random.nextInt(6) + "";
+        }
     }
 
     private void init() {
